@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function loginIndex()
     {
-        return view('pages.auth.login');
+        return view('auth.login');
     }
 
     public function loginProcess(Request $request)
@@ -24,8 +24,10 @@ class AuthController extends Controller
             if (Auth::user()->role == 'Admin') {
                 return redirect()->route('dashboard')->with('success', 'BERHASIL LOGIN');
             } else {
-                return redirect()->back()->with('success', 'BERHASIL LOGIN');
+                return redirect('service')->with('success', 'BERHASIL LOGIN');
             }
+        } else {
+            return redirect()->route('login')->with('error', 'USERNAME ATAU PASSWORD SALAH');
         }
     }
 

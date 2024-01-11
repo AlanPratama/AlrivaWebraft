@@ -15,7 +15,7 @@
   <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
   <!--
     - google font link
@@ -27,9 +27,9 @@
   <!--
     - preload images
   -->
-  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
-  <link rel="preload" as="image" href="./assets/images/hero-abs-1.png" media="min-width(768px)">
-  <link rel="preload" as="image" href="./assets/images/hero-abs-2.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="{{ asset('assets/images/hero-banner.png') }}">
+  <link rel="preload" as="image" href="{{ asset('assets/images/hero-abs2.png') }}" media="min-width(768px)">
+  <link rel="preload" as="image" href="{{ asset('assets/images/hero-abs3.png') }}" media="min-width(768px)">
 
 
   <!-- FLOWBITE -->
@@ -47,7 +47,7 @@
     <div class="container">
 
       <h1 style="display: flex; justify-content: start; align-items: center; gap: 1;">
-        <img src="assets/images/logo/0.png" alt="alriva webcraft" style="width: 55px;">
+        <img src="{{ asset('assets/images/logo/0.png') }}" alt="alriva webcraft" style="width: 55px;">
         <a href="#" class="logo">ALRIVA <span class="md:inline hidden">WEBCRAFT</span></a>
       </h1>
 
@@ -338,7 +338,7 @@
   <!--
     - custom js link
   -->
-  <script src="./assets/js/script.js" defer></script>
+  <script src="{{ asset('assets/js/script.js') }}" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
   <!--

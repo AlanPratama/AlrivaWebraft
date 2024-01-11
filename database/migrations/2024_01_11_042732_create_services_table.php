@@ -21,11 +21,12 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
 
             $table->string('image')->nullable();
+            $table->string('image_link')->default('YES');
 
             $table->string('name')->unique();
             $table->string('slug')->nullable();
 
-            $table->date('estimation')->nullable();
+            $table->integer('estimation')->nullable();
 
             $table->text('description');
 

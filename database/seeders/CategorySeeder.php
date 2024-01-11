@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -14,19 +15,23 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Company Profile'
+            'name' => 'Company Profile',
+            'slug' => Str::slug('Company Profile'),
         ]);
 
         Category::create([
-            'name' => 'eCommerce'
+            'name' => 'eCommerce',
+            'slug' => Str::slug('eCommerce'),
         ]);
 
         Category::create([
-            'name' => 'Profile UMKM'
+            'name' => 'Profile UMKM',
+            'slug' => Str::slug('Profile UMKM'),
         ]);
 
         Category::create([
-            'name' => 'Portofolio'
+            'name' => 'Portofolio',
+            'slug' => Str::slug('Portofolio'),
         ]);
     }
 }

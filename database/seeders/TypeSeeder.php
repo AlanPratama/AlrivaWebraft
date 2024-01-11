@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TypeSeeder extends Seeder
 {
@@ -14,15 +15,19 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         Type::create([
-            'name' => 'Statis'
+            'name' => 'Statis',
+            'slug' => Str::slug('Statis'),
+
         ]);
 
         Type::create([
-            'name' => 'Dimanis'
+            'name' => 'Dimanis',
+            'slug' => Str::slug('Dimanis'),
         ]);
 
         Type::create([
-            'name' => 'Blog'
+            'name' => 'Blog',
+            'slug' => Str::slug('Blog'),
         ]);
     }
 }

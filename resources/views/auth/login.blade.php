@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login | Alriva WebCraft</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <style>
     /*remove custom style*/
@@ -172,7 +172,7 @@
             <span class="text-gray-300 font-normal">or continue with</span>
             <span class="h-px w-16 bg-gray-200"></span>
           </div> -->
-          <form class="mt-8 space-y-6" action="#" method="POST">
+          <form class="mt-8 space-y-6" action="{{ route('loginProcess') }}" method="POST">
             @csrf
             <input type="hidden" name="remember" value="true">
             <div class="relative">
