@@ -20,10 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserPageController::class, 'homepage']);
 
-
 Route::get('/wish-list', [UserPageController::class, 'wishList']);
 Route::get('/service', [UserPageController::class, 'service']);
 Route::get('/service/detail/{slug}', [UserPageController::class, 'serviceDetail']);
+
+Route::get('/category/{slug}', [UserPageController::class, 'categoryWebsite']);
 
 // AUTHENTICATION
 
@@ -39,6 +40,12 @@ Route::post('/auth/register', [AuthController::class, 'registerProcess'])->name(
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/addToWishlist', [UserPageController::class, 'addToWishlist']);
+
+
+
+
+
 
 
 

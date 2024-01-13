@@ -63,9 +63,9 @@
         style="background-image: url('./assets/images/course-bg.jpg')">
         <div class="container">
 
-          <p class="section-subtitle">KUMPULAN WEBSITE TERBAIK</p>
+          <p class="section-subtitle">KUMPULAN WEBSITE {{ $idCategory->name }}</p>
 
-          <h2 class="h2 section-title">JASA KAMI</h2>
+          <h2 class="h2 section-title">KATEGORI {{ $idCategory->name }}</h2>
 
           <ul class="grid-list">
 
@@ -174,11 +174,11 @@
 
           </ul>
 
-          {{-- <a href="{{ url('/service') }}" class="btn btn-primary">
+          <a href="{{ url('/service') }}" class="btn btn-primary">
             <span class="span">Lihat Semua Website</span>
 
             <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-          </a> --}}
+          </a>
 
         </div>
       </section>
@@ -186,9 +186,6 @@
 
     </article>
   </main>
-
-
-
 
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

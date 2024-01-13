@@ -5,12 +5,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduHome - Education Is About Academic Excellence</title>
+  <meta name="description" content="Jasa Pembuatan Website Terjangkau! Alriva WebCraft, Pembuat Website Profesional Dengan Harga Terjangkau!"/>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+  <title>Jasa Pembuatan Website | Alriva WebCraft</title>
 
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="{{ asset('assets/images/logo/2.png') }}" type="image/svg+xml">
 
   <!--
     - custom css link
@@ -32,9 +36,58 @@
   <link rel="preload" as="image" href="{{ asset('assets/images/hero-abs3.png') }}" media="min-width(768px)">
 
 
-  <!-- FLOWBITE -->
+  <!-- TAILWINDCSS -->
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
+  {{-- SWEETALERT 2 --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  {{-- AXIOS --}}
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <style>
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .animated.faster {
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+    }
+
+    .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+    }
+
+    .fadeOut {
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+</style>
 </head>
 
 <body id="top">
@@ -48,13 +101,13 @@
 
       <h1 style="display: flex; justify-content: start; align-items: center; gap: 1;">
         <img src="{{ asset('assets/images/logo/0.png') }}" alt="alriva webcraft" style="width: 55px;">
-        <a href="#" class="logo">ALRIVA <span class="md:inline hidden">WEBCRAFT</span></a>
+        <a href="{{ url('https://www.instagram.com/alrivawebcraft') }}" class="logo">ALRIVA <span class="md:inline hidden">WEBCRAFT</span></a>
       </h1>
 
       <nav class="navbar" data-navbar>
 
         <div class="navbar-top">
-          <a href="#" class="logo">ALRIVA WEBCRAFT</a>
+          <a href="{{ url('https://www.instagram.com/alrivawebcraft') }}" class="logo">ALRIVA WEBCRAFT</a>
 
           <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
             <ion-icon name="close-outline"></ion-icon>
@@ -64,23 +117,23 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <a href="#home" class="navbar-link" data-nav-toggler>Home</a>
+            <a href="{{ url('/#home') }}" class="navbar-link" data-nav-toggler>Home</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#harga" class="navbar-link" data-nav-toggler>Harga</a>
+            <a href="{{ url('/#harga') }}" class="navbar-link" data-nav-toggler>Harga</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#website" class="navbar-link" data-nav-toggler>Website</a>
+            <a href="{{ url('/#website') }}" class="navbar-link" data-nav-toggler>Website</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#portofolio" class="navbar-link" data-nav-toggler>Portofolio</a>
+            <a href="{{ url('/#portofolio') }}" class="navbar-link" data-nav-toggler>Portofolio</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#contact" class="navbar-link" data-nav-toggler>Contact</a>
+            <a href="{{ url('/#contact') }}" class="navbar-link" data-nav-toggler>Contact</a>
           </li>
 
         </ul>
@@ -93,11 +146,22 @@
           <ion-icon name="cart-outline"></ion-icon>
         </button>
 
+        @if (Auth::user())
+        <button onclick="openModal()" class='header-action-btn'><ion-icon name="person-circle-outline"></ion-icon></button>
+        <a href="/logout" class="header-action-btn login-btn">
+            <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+            <!-- <ion-icon name="walk-outline" aria-hidden="true"></ion-icon> -->
+            <span class="span">Logout</span>
+          </a>
+        @else
         <a href="auth/login.html" class="header-action-btn login-btn">
-          <ion-icon name="log-in-outline" aria-hidden="true"></ion-icon>
-          <!-- <ion-icon name="walk-outline" aria-hidden="true"></ion-icon> -->
-          <span class="span">Login / Register</span>
-        </a>
+            <ion-icon name="log-in-outline" aria-hidden="true"></ion-icon>
+            <!-- <ion-icon name="walk-outline" aria-hidden="true"></ion-icon> -->
+            <span class="span">Login / Register</span>
+          </a>
+        @endif
+
+
 
         <button class="header-action-btn nav-open-btn" aria-label="Open menu" data-nav-toggler>
           <ion-icon name="menu-outline"></ion-icon>
@@ -347,6 +411,86 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+  @if (Auth::user())
+
+  <div class="main-modal fixed w-full p-8 h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+  style="background: rgba(0,0,0,.7);">
+  <div
+      class="border border-teal-500 shadow-lg modal-container bg-white md:w-1/2  w-full mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      <div class="modal-content py-4 text-left px-6">
+          <!--Title-->
+          <div class="flex justify-between items-center pb-3">
+              <p class="text-2xl font-bold">Menu</p>
+              <div class="modal-close cursor-pointer z-50">
+                  <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                      viewBox="0 0 18 18">
+                      <path
+                          d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                      </path>
+                  </svg>
+              </div>
+          </div>
+          <!--Body-->
+          <div class="my-5">
+              <div class="flex flex-wrap justify-between items-center gap-4">
+                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
+                      <ion-icon name="person-outline"></ion-icon>
+                      <p>Akun</p>
+                  </a>
+
+                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
+                      <ion-icon name="person-outline"></ion-icon>
+                      <p>Akun</p>
+                  </a>
+
+                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
+                      <ion-icon name="person-outline"></ion-icon>
+                      <p>Akun</p>
+                  </a>
+
+                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
+                      <ion-icon name="person-outline"></ion-icon>
+                      <p>Akun</p>
+                  </a>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.querySelector('.main-modal');
+  const closeButton = document.querySelectorAll('.modal-close');
+
+  const modalClose = () => {
+      modal.classList.remove('fadeIn');
+      modal.classList.add('fadeOut');
+      setTimeout(() => {
+          modal.style.display = 'none';
+      }, 500);
+  }
+
+  const openModal = () => {
+      modal.classList.remove('fadeOut');
+      modal.classList.add('fadeIn');
+      modal.style.display = 'flex';
+  }
+
+  for (let i = 0; i < closeButton.length; i++) {
+
+      const elements = closeButton[i];
+
+      elements.onclick = (e) => modalClose();
+
+      modal.style.display = 'none';
+
+      window.onclick = function (event) {
+          if (event.target == modal) modalClose();
+      }
+  }
+</script>
+  @endif
 </body>
 
 </html>

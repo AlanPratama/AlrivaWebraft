@@ -35,6 +35,13 @@ class Service extends Model
     }
 
 
+
+    // WISHLIST RELATIONAL
+    public function wishlist() {
+        return $this->hasMany(Wishlist::class, 'service_id');
+    }
+
+
     // TRANSACTION RELATIONAL
     public function transaction() {
         return $this->hasMany(Transaction::class, 'service_id');

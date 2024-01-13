@@ -30,15 +30,9 @@ class User extends Authenticatable
     ];
 
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'username'
-            ]
-        ];
+    public function wishlist() {
+        return $this->hasMany(Wishlist::class, 'user_id');
     }
-
 
     public function transaction() {
         return $this->hasMany(Transaction::class, 'user_id');
@@ -54,7 +48,14 @@ class User extends Authenticatable
 
 
 
-
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'username'
+            ]
+        ];
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -64,59 +64,27 @@
 
                     <ul class="grid-list">
 
+                        @foreach ($category as $item)
                         <li>
-                            <div class="category-card">
+                            <a href="{{ url('/category/'.$item->slug) }}">
+                                <div class="category-card">
 
-                                <div class="card-icon">
-                                    <ion-icon name="briefcase-outline"></ion-icon>
+                                    <div class="card-icon">
+                                        <ion-icon name="briefcase-outline"></ion-icon>
+                                    </div>
+
+                                    <div>
+                                        <h3 class="h3 card-title">
+                                            <p>{{ $item->name }}</p>
+                                        </h3>
+
+                                        <span class="card-meta">{{ $item->service->count() }} Website</span>
+                                    </div>
+
                                 </div>
-
-                                <div>
-                                    <h3 class="h3 card-title">
-                                        <a href="#">Personal Development</a>
-                                    </h3>
-
-                                    <span class="card-meta">39 Course</span>
-                                </div>
-
-                            </div>
+                            </a>
                         </li>
-
-                        <li>
-                            <div class="category-card">
-
-                                <div class="card-icon">
-                                    <ion-icon name="file-tray-full-outline"></ion-icon>
-                                </div>
-
-                                <div>
-                                    <h3 class="h3 card-title">
-                                        <a href="#">Human Research</a>
-                                    </h3>
-
-                                    <span class="card-meta">24 Course</span>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="category-card">
-
-                                <div class="card-icon">
-                                    <ion-icon name="color-palette-outline"></ion-icon>
-                                </div>
-
-                                <div>
-                                    <h3 class="h3 card-title">
-                                        <a href="#">Art & Design</a>
-                                    </h3>
-
-                                    <span class="card-meta">39 Course</span>
-                                </div>
-
-                            </div>
-                        </li>
+                        @endforeach
 
                     </ul>
 
@@ -583,9 +551,23 @@
 
                                         <span class="badge shadow">{{ $service->category->name }}</span>
 
-                                        <button class="whishlist-btn" aria-label="Add to whishlist" data-whish-btn>
+                                        @if (Auth::user())
+                                        @php
+                                            $wlUser = $service->wishlist->where('user_id', Auth::user()->id)->first();
+                                            $activeClass = $wlUser ? 'active' : '';
+                                        @endphp
+                                        <button class="whishlist-btn {{ $activeClass }}" data-service-slug="{{ $service->slug }}" aria-label="Add to whishlist" data-whish-btn>
                                             <ion-icon name="heart"></ion-icon>
                                         </button>
+
+                                        @else
+                                        <a href="{{ url('/auth/login') }}">
+                                            <button class="whishlist-btn" data-service-slug="{{ $service->slug }}" aria-label="Add to whishlist" data-whish-btn>
+                                                <ion-icon name="heart"></ion-icon>
+                                            </button>
+                                        </a>
+
+                                        @endif
 
                                     </div>
 
@@ -609,7 +591,7 @@
                                         </ul>
 
                                         <h3 class="h3">
-                                            <a href="#" class="card-title">{{ $service->name }}</a>
+                                            <a href="{{ url('/service/detail/'.$service->slug) }}" class="card-title">{{ $service->name }}</a>
                                         </h3>
 
                                         <p class=""
@@ -661,7 +643,7 @@
 
                     </ul>
 
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ url('/service') }}" class="btn btn-primary">
                         <span class="span">Lihat Semua Website</span>
 
                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -669,7 +651,46 @@
 
                 </div>
             </section>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('.whishlist-btn').on('click', function() {
+                        var serviceSlug = $(this).data('service-slug');
 
+                        $.ajax({
+                            url: '/addToWishlist',
+                            type: 'POST',
+                            data: {
+                                serviceSlug: serviceSlug,
+                                _token: $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: "top-start",
+                                        showConfirmButton: false,
+                                        timer: 3000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.onmouseenter = Swal.stopTimer;
+                                            toast.onmouseleave = Swal.resumeTimer;
+                                        }
+                                    });
+                                    Toast.fire({
+                                        icon: "success",
+                                        title: "BERHASIL MENAMBAH SERVICE DI WISHLIST"
+                                    });
+
+                                }
+                            },
+                            error: function(error) {
+                                console.log(error);
+                            }
+                        });
+                    });
+                });
+            </script>
 
             <!--
             - #INSTRUCTOR
