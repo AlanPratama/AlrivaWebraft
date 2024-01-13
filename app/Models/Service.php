@@ -14,6 +14,7 @@ class Service extends Model
         'type_id',
         'category_id',
         'image',
+        'image_link',
         'name',
         'slug',
         'estimation',

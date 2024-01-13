@@ -23,7 +23,7 @@ Route::get('/', [UserPageController::class, 'homepage']);
 
 Route::get('/wish-list', [UserPageController::class, 'wishList']);
 Route::get('/service', [UserPageController::class, 'service']);
-Route::get('/service/detail', [UserPageController::class, 'serviceDetail']);
+Route::get('/service/detail/{slug}', [UserPageController::class, 'serviceDetail']);
 
 // AUTHENTICATION
 
@@ -62,9 +62,13 @@ Route::middleware('auth')->group(function () {
 
 
         Route::get('/service', [AdminController::class, 'service'])->name('service');
-        Route::post('service.create', [AdminController::class, 'serviceCreate'])->name('serviceCreate');
-        Route::put('service.edit.{slug}', [AdminController::class, 'serviceEdit'])->name('serviceEdit');
 
+        Route::get('/create-service', [AdminController::class, 'serviceCreateIndex']);
+        Route::post('service.create', [AdminController::class, 'serviceCreate'])->name('serviceCreate');
+
+        Route::get('/service/edit/{slug}', [AdminController::class, 'serviceEditIndex']);
+        Route::put('service.edit.{slug}', [AdminController::class, 'serviceEdit'])->name('serviceEdit');
+        Route::put('service.status.update.{slug}', [AdminController::class, 'statusUpdateService'])->name('statusUpdateService');
     });
 
 
