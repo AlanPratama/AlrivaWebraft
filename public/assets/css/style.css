@@ -1544,10 +1544,18 @@ body {
     font-size: 18px;
 }
 
+.pembayaran{
+    width: 80%;
+}
+
 @media (max-width: 768px) {
     .instructor-list {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .pembayaran{
+        width: 100%;
     }
 }
 
@@ -1566,3 +1574,4 @@ body {
     padding: 4px 12px;
     border-radius: var(--radius-4);
 }
+

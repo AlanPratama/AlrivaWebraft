@@ -44,10 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/addToWishlist', [UserPageController::class, 'addToWishlist']);
 
+
+    Route::get('/transaksi', [TransactionController::class, 'allTransaction']);
+
     Route::post('transaction.checkout.{slug}', [TransactionController::class, 'transactionCheckout'])->name('transaction.checkout');
     Route::get('/transaction-detail', [TransactionController::class, 'transactionDetail'])->name('transaction.detail');
 
     Route::post('transaction.start.{slug}', [TransactionController::class, 'transactionStart'])->name('transaction.start');
+    Route::delete('/cancelTransaction/{code}', [TransactionController::class, 'cancelTransaction']);
 
 
     // INDEX BELUM BAYAR
@@ -61,6 +65,12 @@ Route::middleware('auth')->group(function () {
 
 
 
+        Route::get('/transaction/belum-bayar', [AdminController::class, 'transactionBelum'])->name('adminTransactionBelum');
+
+        Route::post('admin.transaction.to.proses.{code}', [AdminController::class, 'transactionToProses'])->name('transactionToProses');
+
+        Route::get('/transaction/diproses', [AdminController::class, 'transactionDiproses'])->name('adminTransactionDiproses');
+        Route::get('/transaction/selesai', [AdminController::class, 'transactionSelesai'])->name('adminTransactionSelesai');
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Service;
+use App\Models\Transaction;
 use App\Models\Type;
 use COM;
 use Illuminate\Http\Request;
@@ -14,6 +15,37 @@ class AdminController extends Controller
     {
         return view('pages.admin.dashboard');
     }
+
+    public function transactionBelum()
+    {
+        $transactions = Transaction::where('status', 'Belum Bayar')->orderBy('created_at', 'desc')->get();
+
+        return view('pages.admin.transactions.transactionBelum', compact('transactions'));
+    }
+
+    public function transactionToProses(Request $request, $code)
+    {
+        $transaction = Transaction::where('code', $code)->first();
+
+        if ($transaction) {
+            $transaction->estimation = $request->estimation;
+            $transaction->status = 'Diproses';
+            $transaction->save();
+
+            return redirect()->route('adminTransactionBelum')->with('success', 'TRANSACTION ACTIVED');
+        } else {
+            return redirect()->back();
+        }
+    }
+
+
+    public function transactionDiproses()
+    {
+        $transactions = Transaction::where('status', 'Diproses')->orderBy('created_at', 'desc')->get();
+
+        return view('pages.admin.transactions.transactionDiproses', compact('transactions'));
+    }
+
 
 
 
@@ -204,7 +236,7 @@ class AdminController extends Controller
             'type_id' => 'required',
             'category_id' => 'required',
             'image' => 'required',
-            'name' => 'required|unique:services,name,'.$service->id,
+            'name' => 'required|unique:services,name,' . $service->id,
             'estimation' => 'required',
             'description' => 'required',
             'price_before' => 'required',
@@ -242,5 +274,4 @@ class AdminController extends Controller
 
         return redirect()->route('service')->with('success', 'STATUS UPDATED');
     }
-
 }
