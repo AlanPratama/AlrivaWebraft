@@ -17,9 +17,9 @@ class Transaction extends Model
         'total_price',
         'date_start',
         'estimation',
-        'actualDateEnd',
+        'date_end',
         'status',
-        'payment_image',
+        'reason',
     ];
 
 

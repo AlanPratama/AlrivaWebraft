@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPageController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,9 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/addToWishlist', [UserPageController::class, 'addToWishlist']);
 
+    Route::post('transaction.checkout.{slug}', [TransactionController::class, 'transactionCheckout'])->name('transaction.checkout');
+    Route::get('/transaction-detail', [TransactionController::class, 'transactionDetail'])->name('transaction.detail');
+
+    Route::post('transaction.start.{slug}', [TransactionController::class, 'transactionStart'])->name('transaction.start');
 
 
-
+    // INDEX BELUM BAYAR
+    Route::get('/transaksi/belum-bayar/{code}', [TransactionController::class, 'transactionIndexBelum']);
 
 
 

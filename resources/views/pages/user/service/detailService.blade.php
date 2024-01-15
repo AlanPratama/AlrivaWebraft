@@ -47,15 +47,16 @@
           </div>
           <p class="leading-relaxed" style="font-size: 20px;">{{ $service->description }}</p>
           <div class="detail-text flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-            <span class="badge shadow">{{ $service->type->name }}</span>
+            <span class="badge shadow"><a href="{{ url('') }}">{{ $service->type->name }}</a></span>
             <span class="">|</span>
-            <span class="badge shadow">{{ $service->category->name }}</span>
+            <span class="badge shadow"><a href="{{ url('/category/'.$service->category->slug) }}">{{ $service->category->name }}</a></span>
           </div>
-          <div class="flex">
+          <form action="{{ route('transaction.checkout', ['slug' => $service->slug]) }}" method="post" class="flex items-center">
+            @csrf
             <span class="title-font font-semibold text-2xl text-gray-900" style="font-size: 22px; font-weight: bold; opacity: 0.92;">RP {{ number_format($service->price_after) }}K</span>
             <button style="background-color: #525DE0;" class="flex ml-auto text-white border-0 py-2 px-6 focus:outline-none rounded">Beli</button>
             <button style="color: #525DE0; border: 1px solid #525DE0; background-color: white;" class="flex ml-4 text-white border-0 py-2 px-6 focus:outline-none rounded">Add To Whishlist</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

@@ -142,9 +142,19 @@
 
       <div class="header-actions">
 
-        <button class="header-action-btn">
-          <ion-icon name="cart-outline"></ion-icon>
-        </button>
+        @if (Auth::user())
+        <a href="{{ url('/wish-list') }}">
+            <button class="header-action-btn">
+                <ion-icon name="cart-outline"></ion-icon>
+            </button>
+        </a>
+        @else
+        <a href="{{ url('/login') }}">
+            <button class="header-action-btn">
+                <ion-icon name="cart-outline"></ion-icon>
+            </button>
+        </a>
+        @endif
 
         @if (Auth::user())
         <button onclick="openModal()" class='header-action-btn'><ion-icon name="person-circle-outline"></ion-icon></button>
@@ -154,7 +164,7 @@
             <span class="span">Logout</span>
           </a>
         @else
-        <a href="auth/login.html" class="header-action-btn login-btn">
+        <a href="{{ url('/auth/login') }}" class="header-action-btn login-btn">
             <ion-icon name="log-in-outline" aria-hidden="true"></ion-icon>
             <!-- <ion-icon name="walk-outline" aria-hidden="true"></ion-icon> -->
             <span class="span">Login / Register</span>

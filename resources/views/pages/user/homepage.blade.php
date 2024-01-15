@@ -858,8 +858,7 @@
                 <div class="container">
 
                     <figure class="cta-banner">
-                        <img src="./assets/images/person-front-computer-working-html.jpg" width="580" height="380"
-                            loading="lazy" alt="cta banner" class="img-cover">
+                        <img src="./assets/images/person-front-computer-working-html.jpg" width="580" height="380" alt="cta banner" class="img-cover">
                     </figure>
 
                     <div class="cta-content">
