@@ -157,7 +157,7 @@
                             <h4 style="font-size: 19px;" class="font-bold text-blue-500">HUBUNGI ADMIN KAMI</h4>
                             <p style="font-size: 16px;" class="mt-2 max-w-screen-sm text-gray-500">Hubungi Admin
                                 Kami dan Kirim Kode Transaksi, Lalu Lakukan Pembayaran Kepada Admin.</p>
-                            <a href="{{ url('') }}">
+                            <a href="{{ url('https://wa.me/+6285817000942?text=Hallo%20Kak!%20Saya%20Sudah%20Membuat%20Order%20di%20Alriva%20WebCraft.%20Ini%20Kode%20Transaksi-nya:%20'.$transaction->code) }}">
                                 <button style="width: auto !important; font-size: 16px;"
                                     class="mt-2 shadow max-w-screen-sm text-white bg-green-500 w-auto px-2 py-1 rounded">Hubungi
                                     Admin</button>
@@ -179,6 +179,36 @@
                             <p style="font-size: 16px;" class="mt-2 max-w-screen-sm text-gray-500">Setelah Melakukan
                                 Pembayaran, Admin Akan Mengubah Status Transaksi Menjadi Diproses dan Segera Membuat
                                 Website Sesuai Dengan Persetujuan.</p>
+                            {{-- <button style="font-size: 14px;" class="px-2.5 py-1.5 rounded mt-1 block font-semibold text-white bg-green-500">(kode)</button> --}}
+                        </div>
+                    </div>
+
+                    <div class="relative w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="absolute -top-0.5 -ml-3.5 h-7 w-7 rounded-full text-blue-500">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-6">
+                            <h4 style="font-size: 19px;" class="font-bold text-blue-500">PERIKSA WEBSITE YANG TELAH DIBUAT
+                            </h4>
+                            <p style="font-size: 16px;" class="mt-2 max-w-screen-sm text-gray-500">Setelah Kami Membuat Website-nya, Kamu Akan Diminta Mengecek Website Yang Telah Kami Buat.</p>
+                            {{-- <button style="font-size: 14px;" class="px-2.5 py-1.5 rounded mt-1 block font-semibold text-white bg-green-500">(kode)</button> --}}
+                        </div>
+                    </div>
+
+                    <div class="relative w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="absolute -top-0.5 -ml-3.5 h-7 w-7 rounded-full text-blue-500">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-6">
+                            <h4 style="font-size: 19px;" class="font-bold text-blue-500">SELESAI
+                            </h4>
+                            <p style="font-size: 16px;" class="mt-2 max-w-screen-sm text-gray-500">Setelah Kamu Mengecek Website Yang Telah Dibuat Selamat! Kamu Sudah Memiliki Website Keren Dengan Harga Terjangkau.</p>
                             {{-- <button style="font-size: 14px;" class="px-2.5 py-1.5 rounded mt-1 block font-semibold text-white bg-green-500">(kode)</button> --}}
                         </div>
                     </div>

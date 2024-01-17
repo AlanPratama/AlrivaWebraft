@@ -55,7 +55,7 @@
                 - #CATEGORY
               -->
 
-            <section class="section category" aria-label="category">
+            <section class="section category" aria-label="category" id="kategori">
                 <div class="container">
 
                     <p class="section-subtitle">Website Kategori</p>
@@ -705,7 +705,7 @@
                 - #INSTRUCTOR
               -->
 
-            <section class="instructor">
+            <section class="instructor" id="developer">
                 <div class="container">
 
 
@@ -722,28 +722,18 @@
                             <div class="instructor-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/images/instructor-1.png" alt="Shaapir Prio">
+                                    <img src="./assets/images/instructor-1.png" alt="alan pratama">
                                 </figure>
 
                                 <a href="#">
-                                    <h3 class="card-title">Shaapir Prio</h3>
+                                    <h3 class="card-title">Alan Pratama</h3>
                                 </a>
 
-                                <p class="card-subtitle">Assistant Director</p>
+                                <p class="card-subtitle">Manager - Frontend</p>
 
                                 <ul class="card-social-list">
 
-                                    <li>
-                                        <a href="#" class="card-social-link">
-                                            <ion-icon name="logo-google"></ion-icon>
-                                        </a>
-                                    </li>
 
-                                    <li>
-                                        <a href="#" class="card-social-link">
-                                            <ion-icon name="logo-twitter"></ion-icon>
-                                        </a>
-                                    </li>
 
                                     <li>
                                         <a href="#" class="card-social-link">
@@ -766,28 +756,18 @@
                             <div class="instructor-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/images/instructor-2.png" alt="Sellina">
+                                    <img src="./assets/images/instructor-2.png" alt="arif">
                                 </figure>
 
                                 <a href="#">
-                                    <h3 class="card-title">Sellina</h3>
+                                    <h3 class="card-title">Arif Ibrahim</h3>
                                 </a>
 
-                                <p class="card-subtitle">Director</p>
+                                <p class="card-subtitle">Admin - UI/UX Design</p>
 
                                 <ul class="card-social-list">
 
-                                    <li>
-                                        <a href="#" class="card-social-link">
-                                            <ion-icon name="logo-google"></ion-icon>
-                                        </a>
-                                    </li>
 
-                                    <li>
-                                        <a href="#" class="card-social-link">
-                                            <ion-icon name="logo-twitter"></ion-icon>
-                                        </a>
-                                    </li>
 
                                     <li>
                                         <a href="#" class="card-social-link">
@@ -810,28 +790,18 @@
                             <div class="instructor-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/images/instructor-3.png" alt="John Smith">
+                                    <img src="./assets/images/instructor-3.png" alt="arva revanza">
                                 </figure>
 
                                 <a href="#">
-                                    <h3 class="card-title">John Smith</h3>
+                                    <h3 class="card-title">Arva Revanza</h3>
                                 </a>
 
-                                <p class="card-subtitle">Assistant Director</p>
+                                <p class="card-subtitle">Supervisor - Backend</p>
 
                                 <ul class="card-social-list">
 
-                                    <li>
-                                        <a href="#" class="card-social-link">
-                                            <ion-icon name="logo-google"></ion-icon>
-                                        </a>
-                                    </li>
 
-                                    <li>
-                                        <a href="#" class="card-social-link">
-                                            <ion-icon name="logo-twitter"></ion-icon>
-                                        </a>
-                                    </li>
 
                                     <li>
                                         <a href="#" class="card-social-link">
@@ -932,7 +902,7 @@
                                         alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-12-04">Dinamis</time>
+                                <time class="badge" datetime="2022-12-04">DINAMIS</time>
 
                                 <div class="card-content">
 
@@ -943,10 +913,10 @@
                                     </address>
 
                                     <h3 class="h3">
-                                        <a href="#" class="card-title">Spanca Games - Platform Penyedia Game Klasik</a>
+                                        <a href="https://alanpratama.github.io/spanca-games/" class="card-title">Spanca Games - Platform Penyedia Game Klasik</a>
                                     </h3>
 
-                                    <a href="#" class="btn-link">
+                                    <a href="https://alanpratama.github.io/spanca-games/" class="btn-link">
                                         <span class="span">Lihat Sekarang</span>
 
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -966,7 +936,7 @@
                                         alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-12-04">Dinamis</time>
+                                <time class="badge" datetime="2022-12-04">DINAMIS</time>
 
                                 <div class="card-content">
 
@@ -1000,7 +970,7 @@
                                         alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-12-04">Dinamis</time>
+                                <time class="badge" datetime="2022-12-04">DINAMIS</time>
 
                                 <div class="card-content">
 
@@ -1034,7 +1004,7 @@
                                         alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-12-04">Statis</time>
+                                <time class="badge" datetime="2022-12-04">STATIS</time>
 
                                 <div class="card-content">
 
@@ -1045,10 +1015,45 @@
                                     </address>
 
                                     <h3 class="h3">
-                                        <a href="#" class="card-title">Portofolio Website, Sebarkan Skill Kamu</a>
+                                        <a href="https://alanpratama.github.io/AlanPratamaRusfi/" class="card-title">Portofolio Website, Sebarkan Skill Kamu</a>
                                     </h3>
 
-                                    <a href="#" class="btn-link">
+                                    <a href="https://alanpratama.github.io/AlanPratamaRusfi/" class="btn-link">
+                                        <span class="span">Lihat Sekarang</span>
+
+                                        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="event-card">
+
+                                <figure class="card-banner">
+                                    <img src="{{ asset('assets/porto/alriva.png') }}" width="370" height="250" loading="lazy"
+                                        alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
+                                </figure>
+
+                                <time class="badge" datetime="2022-12-04">BLOG</time>
+
+                                <div class="card-content">
+
+                                    <address class="card-address">
+                                        <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+                                        <span class="span">Website</span>
+                                    </address>
+
+                                    <h3 class="h3">
+                                        <a href="https://www.alrivaweb.tech/" class="card-title">Alriva WebCraft Blog, Informasi dan Artikel</a>
+                                    </h3>
+
+                                    <a href="https://www.alrivaweb.tech/" class="btn-link">
                                         <span class="span">Lihat Sekarang</span>
 
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>

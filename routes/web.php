@@ -42,7 +42,11 @@ Route::post('/auth/register', [AuthController::class, 'registerProcess'])->name(
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::post('/addToWishlist', [UserPageController::class, 'addToWishlist']);
+
+    Route::get('/akun', [UserController::class, 'akun']);
+    Route::put('/akun/{slug}', [UserController::class, 'akunEdit'])->name('edit.akun');
+
+    Route::post('/addToWishlist', [UserPageController::class, 'addToWishlist'])->name('addToWishlist');
 
 
     Route::get('/transaksi', [TransactionController::class, 'allTransaction']);

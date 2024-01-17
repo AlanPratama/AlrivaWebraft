@@ -120,10 +120,21 @@
 
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/2.png') }}" type="image/svg+xml">
+
 </head>
 
 <body>
-
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "SUCCESS!",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
     <div class="relative min-h-screen flex ">
         <div
             class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
@@ -131,15 +142,17 @@
                 style="background-image: url(../assets/images/about-2.jpg);">
                 <div class="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
                 <div class="w-full  max-w-md z-10">
-                    <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Reference site about Lorem Ipsum..
+                    <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Penyedia Jasa Pembuatan Website
                     </div>
-                    <div class="sm:text-sm xl:text-md text-gray-200 font-normal"> What is Lorem Ipsum Lorem Ipsum is
-                        simply dummy
-                        text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy
-                        text ever
-                        since the 1500s when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book it
-                        has?</div>
+                    <div class="sm:text-sm xl:text-md text-gray-200 font-normal">Membutuhkan Website Dengan Tampilan
+                        Keren Dengan Harga Yang Murah? Alriva Webcraft Tentu Solusinya!</div>
+                    <div>
+                        <a href="https://wa.wizard.id/452953">
+                            <button
+                                class="bg-white border-2 mt-2 border-blue-500 rounded px-2 py-1 text-blue-500 shadow">HUBUNGI
+                                KAMI</button>
+                        </a>
+                    </div>
                 </div>
                 <!---remove custom style-->
                 <ul class="circles">
@@ -162,7 +175,11 @@
                         <h2 class="mt-6 text-3xl font-bold text-gray-900">
                             Register!
                         </h2>
-                        <p class="mt-2 text-sm text-gray-500">Silahkan Buat Akun Kamu</p>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <p class="mt-2 text-sm text-red-400">* {{ $error }}</p>
+                            @endforeach
+                        @endif
                     </div>
                     <!-- <div class="flex flex-row justify-center items-center space-x-3">
             <a href="https://www.behance.net/ajeeshmon" target="_blank"
@@ -191,8 +208,8 @@
                                 Nama Lengkap
                             </label>
                             <input name="name"
-                                class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500" value="{{ old('name') }}"
-                                type="text" placeholder="Masukkan Nama Lengkap">
+                                class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
+                                value="{{ old('name') }}" type="text" placeholder="Masukkan Nama Lengkap">
                         </div>
 
                         <div class="flex gap-2">
@@ -201,16 +218,16 @@
                                     Email
                                 </label>
                                 <input name="email"
-                                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500" value="{{ old('email') }}"
-                                    type="text" placeholder="Masukkan Nama Lengkap">
+                                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
+                                    value="{{ old('email') }}" type="text" placeholder="Masukkan Nama Lengkap">
                             </div>
                             <div class="content-center">
                                 <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
                                     Telepon
                                 </label>
-                                <input name="telepon"
-                                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500" value="{{ old('telepon') }}"
-                                    type="text" placeholder="Masukkan Nama Lengkap">
+                                <input name="phone"
+                                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
+                                    value="{{ old('phone') }}" type="text" placeholder="Masukkan Nama Lengkap">
                             </div>
                         </div>
 
@@ -240,7 +257,7 @@
                                 <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
                                     Kofirmasi Password
                                 </label>
-                                <input name="password"
+                                <input name="confirm_password"
                                     class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
                                     type="password" placeholder="Masukkan Password Kamu">
                             </div>
@@ -254,7 +271,7 @@
                         <p
                             class="flex flex-wrap gap-2 items-center justify-center mt-10 text-center text-md text-gray-500">
                             <span>Sudah Punya Akun?</span>
-                            <a href="{{ url('/ login') }}"
+                            <a href="{{ url('/auth/login') }}"
                                 class="text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300">Login</a>
                         </p>
                     </form>

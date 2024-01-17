@@ -53,9 +53,7 @@ class UserPageController extends Controller
             Wishlist::create($data);
         }
 
-        return response()->json([
-            'status' => 200
-        ]);
+        return redirect()->back();
     }
 
 

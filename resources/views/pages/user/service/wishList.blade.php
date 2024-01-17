@@ -184,7 +184,9 @@
 
                         </ul>
                     @else
-                        <h3>KAMU BELUM LOGIN</h3>
+                        <div class="text-center w-full" style="padding: 40px 0px;">
+                            <h3 class="text-center w-full flex items-center justify-center gap-2" style="font-size: 20px;">KAMU BELUM LOGIN | <a href="{{ url('/auth/login') }}" class="text-blue-500 font-semibold">LOGIN SEKARANG</a></h3>
+                        </div>
                     @endif
 
                     <a href="{{ url('/service') }}" class="btn btn-primary">

@@ -94,7 +94,7 @@
 
                                         @else
                                         <a href="{{ url('/auth/login') }}">
-                                            <button class="whishlist-btn" data-service-slug="{{ $service->slug }}" aria-label="Add to whishlist" data-whish-btn>
+                                            <button class="whishlist-btn">
                                                 <ion-icon name="heart"></ion-icon>
                                             </button>
                                         </a>

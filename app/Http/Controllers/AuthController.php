@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     public function registerIndex()
     {
-        return view('pages.auth.register');
+        return view('auth.register');
     }
 
 
@@ -44,8 +44,9 @@ class AuthController extends Controller
             'name' => 'required',
             'phone' =>'required',
             'email' => 'required',
-            'username' => 'required|unqiue:users,username',
-            'passowrd' => 'required',
+            'username' => 'required|unique:users,username',
+            'password' => 'required',
+            'confirm_password' => 'same:password|required',
         ]);
 
 
@@ -54,7 +55,7 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'username' => $request->username,
-            'passowrd' => bcrypt($request->password),
+            'password' => bcrypt($request->password),
         ];
 
         User::create($data);
