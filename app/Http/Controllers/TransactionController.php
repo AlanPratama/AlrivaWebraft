@@ -16,9 +16,10 @@ class TransactionController extends Controller
     {
         $belum = Transaction::where('status', 'Belum Bayar')->orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
         $diproses = Transaction::where('status', 'Diproses')->orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
+        $diperiksa = Transaction::where('status', 'Diperiksa')->orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
         $selesai = Transaction::where('status', 'Selesai')->orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
 
-        return view('pages.user.transaction.allTransaction', compact('belum', 'diproses', 'selesai'));
+        return view('pages.user.transaction.allTransaction', compact('belum', 'diproses', 'diperiksa', 'selesai'));
     }
 
 
@@ -84,11 +85,60 @@ class TransactionController extends Controller
     // INDEX FOR BELUM BAYAR
     public function transactionIndexBelum($code)
     {
-        $transaction = Transaction::where('code', $code)->first();
+        $transaction = Transaction::where('code', $code)->where('status', 'Belum Bayar')->first();
 
-        if (Auth::user()->id == $transaction->user_id || Auth::user()->role == 'Admin') {
-            if ($transaction) {
+        if ($transaction) {
+            if (Auth::user()->id == $transaction->user_id || Auth::user()->role == 'Admin') {
                 return view('pages.user.transaction.belumBayar', compact('transaction'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    // INDEX FOR DIPROSES
+    public function transactionIndexProses($code)
+    {
+        $transaction = Transaction::where('code', $code)->where('status', 'Diproses')->first();
+
+        if ($transaction) {
+            if (Auth::user()->id == $transaction->user_id || Auth::user()->role == 'Admin') {
+                return view('pages.user.transaction.diproses', compact('transaction'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    // INDEX FOR DIPERIKSA
+    public function transactionIndexPeriksa($code)
+    {
+        $transaction = Transaction::where('code', $code)->where('status', 'Diperiksa')->first();
+
+        if ($transaction) {
+            if (Auth::user()->id == $transaction->user_id || Auth::user()->role == 'Admin') {
+                return view('pages.user.transaction.diperiksa', compact('transaction'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
+
+
+    // INDEX FOR SELESAI
+    public function transactionIndexSelesai($code)
+    {
+        $transaction = Transaction::where('code', $code)->where('status', 'Selesai')->first();
+
+        if ($transaction) {
+            if (Auth::user()->id == $transaction->user_id || Auth::user()->role == 'Admin') {
+                return view('pages.user.transaction.selesai', compact('transaction'));
             } else {
                 return redirect()->back();
             }

@@ -443,24 +443,14 @@
           <!--Body-->
           <div class="my-5">
               <div class="flex flex-wrap justify-between items-center gap-4">
-                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
+                  <a href="{{ url('/akun') }}" style="width: 48%; font-size: 20px; color: #535ce0e9;" class="shadow py-12 flex flex-col justify-center items-center hover:bg-gray-100">
                       <ion-icon name="person-outline"></ion-icon>
                       <p>Akun</p>
                   </a>
 
-                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
-                      <ion-icon name="person-outline"></ion-icon>
-                      <p>Akun</p>
-                  </a>
-
-                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
-                      <ion-icon name="person-outline"></ion-icon>
-                      <p>Akun</p>
-                  </a>
-
-                  <a href="#" style="width: 48%;" class="shadow flex flex-col justify-center items-center">
-                      <ion-icon name="person-outline"></ion-icon>
-                      <p>Akun</p>
+                  <a href="{{ url('/transaksi') }}" style="width: 48%; font-size: 20px; color: #535ce0e9;" class="shadow py-12 flex flex-col justify-center items-center hover:bg-gray-100">
+                    <ion-icon name="albums-outline"></ion-icon>
+                      <p>Histori</p>
                   </a>
               </div>
           </div>

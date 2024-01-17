@@ -6,19 +6,42 @@ use App\Models\Category;
 use App\Models\Service;
 use App\Models\Transaction;
 use App\Models\Type;
+use App\Models\User;
+use Carbon\Carbon;
 use COM;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('pages.admin.dashboard');
+        $services = Service::orderBy('sold', 'desc')->get();
+        $profit = 0;
+        $transactions = Transaction::where('status', '!=', 'Belum Bayar')->paginate(5);
+        $countTransaction = Transaction::where('status', '!=', 'Belum Bayar')->get();
+
+        foreach ($countTransaction as $item) {
+            $profit += $item->total_price;
+        }
+
+        $user = User::where('role', '!=', 'Admin')->count();
+
+        return view('pages.admin.dashboard', compact('services', 'countTransaction', 'profit', 'transactions', 'user'));
     }
 
-    public function transactionBelum()
+    // BELUM BAYAR
+
+    public function transactionBelum(Request $request)
     {
-        $transactions = Transaction::where('status', 'Belum Bayar')->orderBy('created_at', 'desc')->get();
+        if ($request->search) {
+            $transactions = Transaction::where('status', 'Belum Bayar')
+                ->orderBy('created_at', 'desc')
+                ->where('code', 'like', '%' . $request->search . '%')
+                ->get();
+        } else {
+            $transactions = Transaction::where('status', 'Belum Bayar')->orderBy('created_at', 'desc')->get();
+        }
 
         return view('pages.admin.transactions.transactionBelum', compact('transactions'));
     }
@@ -39,16 +62,83 @@ class AdminController extends Controller
     }
 
 
-    public function transactionDiproses()
-    {
-        $transactions = Transaction::where('status', 'Diproses')->orderBy('created_at', 'desc')->get();
+    // DIPROSES
 
+    public function transactionDiproses(Request $request)
+    {
+        if ($request->search) {
+            $transactions = Transaction::where('status', 'Diproses')
+                ->orderBy('created_at', 'desc')
+                ->where('code', 'like', '%' . $request->search . '%')
+                ->get();
+        } else {
+            $transactions = Transaction::where('status', 'Diproses')->orderBy('created_at', 'desc')->get();
+        }
         return view('pages.admin.transactions.transactionDiproses', compact('transactions'));
     }
 
+    public function transactionToPeriksa(Request $request, $code)
+    {
+        $transaction = Transaction::where('code', $code)->where('status', 'Diproses')->first();
+
+        if ($transaction) {
+            $transaction->status = 'Diperiksa';
+            $transaction->save();
+
+            return redirect()->route('adminTransactionDiproses')->with('success', 'TRANSACTION STATUS CHANGED');
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    // DIPERIKSA
+    public function transactionDiperiksa(Request $request)
+    {
+        if ($request->search) {
+            $transactions = Transaction::where('status', 'Diperiksa')
+                ->orderBy('created_at', 'desc')
+                ->where('code', 'like', '%' . $request->search . '%')
+                ->get();
+        } else {
+            $transactions = Transaction::where('status', 'Diperiksa')->orderBy('created_at', 'desc')->get();
+        }
+        return view('pages.admin.transactions.transactionDiperiksa', compact('transactions'));
+    }
+
+    public function transactionToSelesai(Request $request, $code)
+    {
+        $transaction = Transaction::where('code', $code)->where('status', 'Diperiksa')->first();
+
+        if ($transaction) {
+            $transaction->status = 'Selesai';
+            $transaction->date_end = Carbon::now()->toDateString();
+            $transaction->save();
+
+            if (Auth::user()->role == 'Admin') {
+                return redirect()->route('adminTransactionDiperiksa')->with('success', 'TRANSACTION STATUS CHANGED');
+            } else {
+                return redirect('/transaksi')->with('success', 'TERIMA KASIH SUDAH MENGGUNAKAN DAN PERCAYA PADA JASA KAMI');
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
 
 
+    // SELESAI
+    public function transactionSelesai(Request $request)
+    {
+        if ($request->search) {
+            $transactions = Transaction::where('status', 'Selesai')
+                ->orderBy('created_at', 'desc')
+                ->where('code', 'like', '%' . $request->search . '%')
+                ->get();
+        } else {
+            $transactions = Transaction::where('status', 'Selesai')->orderBy('created_at', 'desc')->get();
+        }
 
+        return view('pages.admin.transactions.transactionSelesai', compact('transactions'));
+    }
 
 
     // OTHER || OTHER || OTHER || OTHER || OTHER || OTHER || OTHER || OTHER || OTHER || OTHER ||
@@ -175,7 +265,16 @@ class AdminController extends Controller
     // SERVICE || SERVICE || SERVICE || SERVICE || SERVICE || SERVICE || SERVICE || SERVICE || SERVICE || SERVICE ||
     public function service(Request $request)
     {
-        $services = Service::orderBy('type_id', 'desc')->get();
+        if ($request->filter) {
+            if ($request->filter == 'terbanyak') {
+                $services = Service::orderBy('type_id', 'desc')->get();
+            } elseif ($request->filter == 'tersedikit') {
+                $services = Service::orderBy('type_id', 'asc')->get();
+            }
+        } else {
+            $services = Service::orderBy('type_id', 'desc')->get();
+        }
+
         return view('pages.admin.services.service', compact('services'));
     }
 
@@ -264,7 +363,7 @@ class AdminController extends Controller
     {
         $service = Service::where('slug', $slug)->first();
 
-        if ($service->status = 'avalaible') {
+        if ($service->status == 'avalaible') {
             $service->status = 'not avalaible';
             $service->save();
         } else {
@@ -273,5 +372,42 @@ class AdminController extends Controller
         }
 
         return redirect()->route('service')->with('success', 'STATUS UPDATED');
+    }
+
+
+
+
+
+
+
+    public function users()
+    {
+        $users = User::where('role', '!=', 'Admin')->get();
+
+        return view('pages.admin.user', compact('users'));
+    }
+
+
+    public function editUser(Request $request, $slug)
+    {
+        $user = User::where('slug', $slug)->first();
+
+        if ($user) {
+            $data = $request->validate([
+                'name' => 'required',
+                'phone' => 'required',
+                'email' => 'required',
+                'username' => 'required|unique:users,username,' . $user->id,
+                'password' => '',
+                'role' => 'required',
+            ]);
+
+            $user->slug = null;
+            $user->update($data);
+
+            return redirect()->route('adminUser')->with('success', 'USER INFORMATION SUCCES TO EDIT');
+        } else {
+            return redirect()->back();
+        }
     }
 }

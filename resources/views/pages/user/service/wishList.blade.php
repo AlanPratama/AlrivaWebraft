@@ -27,7 +27,7 @@
                                     <div class="category-card">
 
                                         <div class="card-icon">
-                                            <ion-icon name="briefcase-outline"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
                                         </div>
 
                                         <div>

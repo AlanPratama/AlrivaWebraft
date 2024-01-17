@@ -45,21 +45,40 @@
                     </div>
                 </div>
 
+                {{-- PANAH --}}
+                <div class="w-1/6 align-center items-center align-middle content-center flex">
+                    <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                        <div class="bg-gray-500 text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                            style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div class="flex-1">
+                    <div class="w-10 h-10 bg-gray-500 text-white mx-auto rounded-full text-lg text-white flex items-center">
+                        <span class="text-grey-darker text-center w-full"><ion-icon name="checkmark-done-outline"
+                                class="w-full" style="font-size: 16px;"></ion-icon></span>
+                    </div>
+                </div>
+
 
                 <div class="flex-1">
                 </div>
             </div>
 
             <div style="font-size: 16px;" class="flex content-center text-center">
-                <div class="w-1/3">
-                    Belum Bayar
+                <div class="w-1/4">
+                    Bayar
                 </div>
 
-                <div class="w-1/3">
+                <div class="w-1/4">
                     Diproses
                 </div>
 
-                <div class="w-1/3">
+                <div class="w-1/4">
+                    Diperiksa
+                </div>
+
+                <div class="w-1/4">
                     Selesai
                 </div>
 
@@ -249,7 +268,7 @@
                             <h4 style="font-size: 19px;" class="font-bold text-blue-500">SALIN KODE TRANSAKSI</h4>
                             <p style="font-size: 16px;" class="mt-2 max-w-screen-sm text-gray-500">Salin Kode
                                 Transaksi dan Hubungi Admin Kami.</p>
-                            <p style="width: auto !important; font-size: 16px;"
+                            <p style="width: 70% !important; font-size: 16px;"
                                 class="mt-2 shadow max-w-screen-sm text-white bg-blue-500 w-auto px-2 py-1 rounded">
                                 {{ $transaction->code }}</p>
                             {{-- <span style="font-size: 16px;" class="mt-1 block font-semibold text-blue-500">(kode)</span> --}}

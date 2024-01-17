@@ -56,7 +56,11 @@ Route::middleware('auth')->group(function () {
 
     // INDEX BELUM BAYAR
     Route::get('/transaksi/belum-bayar/{code}', [TransactionController::class, 'transactionIndexBelum']);
+    Route::get('/transaksi/diproses/{code}', [TransactionController::class, 'transactionIndexProses']);
+    Route::get('/transaksi/diperiksa/{code}', [TransactionController::class, 'transactionIndexPeriksa']);
+    Route::get('/transaksi/selesai/{code}', [TransactionController::class, 'transactionIndexSelesai']);
 
+    Route::post('transaction.to.selesai.{code}', [AdminController::class, 'transactionToSelesai'])->name('transactionToSelesai');
 
 
 
@@ -66,11 +70,17 @@ Route::middleware('auth')->group(function () {
 
 
         Route::get('/transaction/belum-bayar', [AdminController::class, 'transactionBelum'])->name('adminTransactionBelum');
-
         Route::post('admin.transaction.to.proses.{code}', [AdminController::class, 'transactionToProses'])->name('transactionToProses');
 
         Route::get('/transaction/diproses', [AdminController::class, 'transactionDiproses'])->name('adminTransactionDiproses');
+
+        Route::post('admin.transaction.to.diperiksa.{code}', [AdminController::class, 'transactionToPeriksa'])->name('transactionToPeriksa');
+
+
+        Route::get('/transaction/diperiksa', [AdminController::class, 'transactionDiperiksa'])->name('adminTransactionDiperiksa');
+
         Route::get('/transaction/selesai', [AdminController::class, 'transactionSelesai'])->name('adminTransactionSelesai');
+
 
 
 
@@ -93,6 +103,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/service/edit/{slug}', [AdminController::class, 'serviceEditIndex']);
         Route::put('service.edit.{slug}', [AdminController::class, 'serviceEdit'])->name('serviceEdit');
         Route::put('service.status.update.{slug}', [AdminController::class, 'statusUpdateService'])->name('statusUpdateService');
+
+
+        Route::get('/users', [AdminController::class, 'users'])->name('adminUser');
+        Route::put('admin.edit.user.{slug}', [AdminController::class, 'editUser'])->name('edit.user');
     });
 
 

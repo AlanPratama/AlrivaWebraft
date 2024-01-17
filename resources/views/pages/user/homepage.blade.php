@@ -5,8 +5,8 @@
         <article>
 
             <!--
-            - #HERO
-          -->
+                - #HERO
+              -->
 
             <section class="hero" id="home" aria-label="hero"
                 style="background-image: url('./assets/images/hero-bg.jpg')">
@@ -23,7 +23,7 @@
                             solusinya!
                         </p>
 
-                        <a href="#" class="btn btn-primary">
+                        <a href="https://wa.wizard.id/452953" class="btn btn-primary">
                             <span class="span">Hubungi Sekarang</span>
 
                             <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -52,8 +52,8 @@
 
 
             <!--
-            - #CATEGORY
-          -->
+                - #CATEGORY
+              -->
 
             <section class="section category" aria-label="category">
                 <div class="container">
@@ -65,25 +65,25 @@
                     <ul class="grid-list">
 
                         @foreach ($category as $item)
-                        <li>
-                            <a href="{{ url('/category/'.$item->slug) }}">
-                                <div class="category-card">
+                            <li>
+                                <a href="{{ url('/category/' . $item->slug) }}">
+                                    <div class="category-card">
 
-                                    <div class="card-icon">
-                                        <ion-icon name="briefcase-outline"></ion-icon>
+                                        <div class="card-icon">
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </div>
+
+                                        <div>
+                                            <h3 class="h3 card-title">
+                                                <p>{{ $item->name }}</p>
+                                            </h3>
+
+                                            <span class="card-meta">{{ $item->service->count() }} Website</span>
+                                        </div>
+
                                     </div>
-
-                                    <div>
-                                        <h3 class="h3 card-title">
-                                            <p>{{ $item->name }}</p>
-                                        </h3>
-
-                                        <span class="card-meta">{{ $item->service->count() }} Website</span>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
                         @endforeach
 
                     </ul>
@@ -96,8 +96,8 @@
 
 
             <!--
-            - #ABOUT
-          -->
+                - #ABOUT
+              -->
 
             <section class="section about" id="about" aria-label="about">
                 <div class="container">
@@ -111,7 +111,7 @@
                             aria-hidden="true" class="abs-img abs-img-1">
 
                         <!-- <img src="./assets/images/about-abs-2.png" width="150" height="200" loading="lazy" aria-hidden="true"
-                  class="abs-img abs-img-2"> -->
+                      class="abs-img abs-img-2"> -->
 
                     </figure>
 
@@ -161,8 +161,8 @@
                             <li class="about-item">
 
                                 <div class="item-icon item-icon-2">
-                                    <img src="./assets/images/about-icon-2.png" width="30" height="30"
-                                        loading="lazy" aria-hidden="true">
+                                    <img src="./assets/images/about-icon-2.png" width="30" height="30" loading="lazy"
+                                        aria-hidden="true">
                                 </div>
 
                                 <div>
@@ -215,7 +215,7 @@
 
                         </ul>
 
-                        <a href="#" class="btn btn-primary">
+                        <a href="https://wa.wizard.id/452953" class="btn btn-primary">
                             <span class="span">Hubungi Kami</span>
 
                             <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -229,8 +229,8 @@
 
 
             <!--
-            - #PRICING
-           -->
+                - #PRICING
+               -->
             <div class="min-h-screen items-center" id="harga">
                 <div class="" style="padding: 0px 15px;">
                     <div class="text-center font-semibold">
@@ -239,7 +239,7 @@
                             <span>Plans</span>
                         </h1>
                         <p style="font-size: 24px;" class="pt-6 text-gray-400 font-normal w-full px-8 md:w-full">
-                            Choose a plan that works best for you and your team.
+                            Jasa Yang Kami Tawarkan Untuk Membuat Website Yang Kamu Mau
                         </p>
                     </div>
                     <!-- cards -->
@@ -251,7 +251,7 @@
                                 <div class="flex justify-center">
                                     <span style="font-size: 22px;"
                                         class="inline-flex px-4 py-1 rounded-full leading-5 font-semibold tracking-wide uppercase">
-                                        Basic
+                                        Statis
                                     </span>
                                 </div>
                                 <div style="font-size: 40px; font-weight: bolder; margin-top: 2px;" class="text-center">
@@ -326,10 +326,12 @@
                                     My wife
                                 </li>
                             </ul>
-                            <button type="button" style="font-size: 20px;"
-                                class="w-full px-3 py-3 shadow rounded-lg text-indigo-500 hover:text-white bg-white hover:bg-indigo-500 transition-colors duration-700 transform">
-                                Beli Sekarang
-                            </button>
+                            <a href="https://wa.wizard.id/d6f438">
+                                <button type="button" style="font-size: 20px;"
+                                    class="w-full px-3 py-3 shadow rounded-lg text-indigo-500 hover:text-white bg-white hover:bg-indigo-500 transition-colors duration-700 transform">
+                                    Beli Sekarang
+                                </button>
+                            </a>
                         </div>
 
                         <!-- Popular -->
@@ -340,7 +342,7 @@
                                 <div class="flex justify-center">
                                     <span style="font-size: 22px;"
                                         class="inline-flex px-4 py-1 rounded-full leading-5 font-semibold tracking-wide uppercase">
-                                        Popular
+                                        Dinamis
                                     </span>
                                 </div>
                                 <div style="font-size: 40px; font-weight: bolder; margin-top: 2px;" class="text-center">
@@ -420,10 +422,12 @@
                                     My wife
                                 </li>
                             </ul>
-                            <button type="button" style="font-size: 20px;"
-                                class="w-full px-3 py-3 shadow rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-700 transform">
-                                Beli Sekarang
-                            </button>
+                            <a href="https://wa.wizard.id/d6f438">
+                                <button type="button" style="font-size: 20px;"
+                                    class="w-full px-3 py-3 shadow rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-700 transform">
+                                    Beli Sekarang
+                                </button>
+                            </a>
                         </div>
 
                         <!-- premium -->
@@ -433,7 +437,7 @@
                                 <div class="flex justify-center">
                                     <span style="font-size: 22px;"
                                         class="inline-flex px-4 py-1 rounded-full leading-5 font-semibold tracking-wide uppercase">
-                                        Premium
+                                        Custom Website
                                     </span>
                                 </div>
                                 <div style="font-size: 40px; font-weight: bolder; margin-top: 2px;" class="text-center">
@@ -509,10 +513,12 @@
                                     My wife
                                 </li>
                             </ul>
-                            <button type="button" style="font-size: 20px;"
-                                class="w-full px-3 py-3 shadow rounded-lg text-indigo-500 hover:text-white bg-white hover:bg-indigo-500 transition-colors duration-700 transform">
-                                Beli Sekarang
-                            </button>
+                            <a href="https://wa.wizard.id/d6f438">
+                                <button type="button" style="font-size: 20px;"
+                                    class="w-full px-3 py-3 shadow rounded-lg text-indigo-500 hover:text-white bg-white hover:bg-indigo-500 transition-colors duration-700 transform">
+                                    Beli Sekarang
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -525,8 +531,8 @@
 
 
             <!--
-            - #COURSE
-          -->
+                - #COURSE
+              -->
 
             <section class="section course" id="website" aria-label="course"
                 style="background-image: url('./assets/images/course-bg.jpg')">
@@ -539,7 +545,8 @@
                     <ul class="grid-list">
                         @foreach ($services as $service)
                             <li>
-                                <div class="course-card" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important;">
+                                <div class="course-card"
+                                    style="box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important;">
 
                                     <figure class="card-banner">
                                         <img src="{{ $service->image_link == 'NO' ? asset($service->image) : $service->image }}"
@@ -552,21 +559,22 @@
                                         <span class="badge shadow">{{ $service->category->name }}</span>
 
                                         @if (Auth::user())
-                                        @php
-                                            $wlUser = $service->wishlist->where('user_id', Auth::user()->id)->first();
-                                            $activeClass = $wlUser ? 'active' : '';
-                                        @endphp
-                                        <button class="whishlist-btn {{ $activeClass }}" data-service-slug="{{ $service->slug }}" aria-label="Add to whishlist" data-whish-btn>
-                                            <ion-icon name="heart"></ion-icon>
-                                        </button>
-
-                                        @else
-                                        <a href="{{ url('/auth/login') }}">
-                                            <button class="whishlist-btn" data-service-slug="{{ $service->slug }}" aria-label="Add to whishlist" data-whish-btn>
+                                            @php
+                                                $wlUser = $service->wishlist->where('user_id', Auth::user()->id)->first();
+                                                $activeClass = $wlUser ? 'active' : '';
+                                            @endphp
+                                            <button class="whishlist-btn {{ $activeClass }}"
+                                                data-service-slug="{{ $service->slug }}" aria-label="Add to whishlist"
+                                                data-whish-btn>
                                                 <ion-icon name="heart"></ion-icon>
                                             </button>
-                                        </a>
-
+                                        @else
+                                            <a href="{{ url('/auth/login') }}">
+                                                <button class="whishlist-btn" data-service-slug="{{ $service->slug }}"
+                                                    aria-label="Add to whishlist" data-whish-btn>
+                                                    <ion-icon name="heart"></ion-icon>
+                                                </button>
+                                            </a>
                                         @endif
 
                                     </div>
@@ -591,7 +599,8 @@
                                         </ul>
 
                                         <h3 class="h3">
-                                            <a href="{{ url('/service/detail/'.$service->slug) }}" class="card-title">{{ $service->name }}</a>
+                                            <a href="{{ url('/service/detail/' . $service->slug) }}"
+                                                class="card-title">{{ $service->name }}</a>
                                         </h3>
 
                                         <p class=""
@@ -606,17 +615,17 @@
 
                                         <!-- <div class="rating-wrapper">
 
-                                        <div class="rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
+                                            <div class="rating">
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                            </div>
 
-                                        <span class="rating-text">(18 Review)</span>
+                                            <span class="rating-text">(18 Review)</span>
 
-                                        </div> -->
+                                            </div> -->
 
                                         <div class="card-footer">
 
@@ -693,8 +702,8 @@
             </script>
 
             <!--
-            - #INSTRUCTOR
-          -->
+                - #INSTRUCTOR
+              -->
 
             <section class="instructor">
                 <div class="container">
@@ -850,32 +859,45 @@
 
 
             <!--
-            - #CTA
-          -->
+                - #CTA
+              -->
 
             <section class="section cta" aria-label="workshop"
                 style="background-image: url('./assets/images/cta-bg.png')" id="contact">
                 <div class="container">
 
                     <figure class="cta-banner">
-                        <img src="./assets/images/person-front-computer-working-html.jpg" width="580" height="380" alt="cta banner" class="img-cover">
+                        <img src="./assets/images/person-front-computer-working-html.jpg" width="580" height="380"
+                            alt="cta banner" class="img-cover">
                     </figure>
 
                     <div class="cta-content">
 
-                        <p class="section-subtitle">Free Workshop</p>
+                        <p class="section-subtitle">Contact Us</p>
 
-                        <h2 class="h2 section-title">Join Our Free Workshops</h2>
+                        <h2 class="h2 section-title">Hubungi Kami Sekarang!</h2>
 
-                        <p class="section-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit amet, consect adipi scing elit, sed
-                            do
-                            eiusmod tempor
-                            incididunt ut sed do eiusmod tempor incididunt ut labore et dolore aliqua.
+                        <a href="https://wa.wizard.id/452953" class="flex justify-start items-center gap-1 mt-2" style="font-size: 21px;">
+                            <ion-icon name="logo-whatsapp"></ion-icon>
+                            <p>Whatsapp</p>
+                        </a>
+
+                        <a href="https://www.instagram.com/alrivawebcraft" class="flex justify-start items-center gap-1 mt-2" style="font-size: 21px;">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                            <p>Instagram</p>
+                        </a>
+
+                        <a href="https://wa.wizard.id/452953" class="flex justify-start items-center gap-1 mt-2" style="font-size: 21px;">
+                            <ion-icon name="location-outline"></ion-icon>
+                            <p>Lokasi Kami</p>
+                        </a>
+
+                        <p href="https://wa.wizard.id/452953" class="mt-2" style="font-size: 21px;">
+                            Kami Siap Membantu Membangun Website Dengan Desain dan Fungsional Yang Bagus Dengan Harga Yang Sangat Terjangkau
                         </p>
 
-                        <a href="#" class="btn btn-secondary">
-                            <span class="span">Upcomming Workshop</span>
+                        <a href="https://wa.wizard.id/452953" class="btn btn-secondary mt-6">
+                            <span class="span">Hubungi Kami</span>
 
                             <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                         </a>
@@ -890,8 +912,8 @@
 
 
             <!--
-            - #EVENT
-          -->
+                - #EVENT
+              -->
 
             <section class="section event" id="portofolio" aria-label="event">
                 <div class="container">
@@ -906,27 +928,26 @@
                             <div class="event-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/images/event-1.jpg" width="370" height="250" loading="lazy"
+                                    <img src="{{ asset('assets/porto/spancagame.png') }}" width="370" height="250" loading="lazy"
                                         alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-12-04">04 Dec 2022</time>
+                                <time class="badge" datetime="2022-12-04">Dinamis</time>
 
                                 <div class="card-content">
 
                                     <address class="card-address">
                                         <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
 
-                                        <span class="span">Alpaca Way Anaheim, CA 92805</span>
+                                        <span class="span">Website</span>
                                     </address>
 
                                     <h3 class="h3">
-                                        <a href="#" class="card-title">Innovation & Technological Entrepreneurship
-                                            Team</a>
+                                        <a href="#" class="card-title">Spanca Games - Platform Penyedia Game Klasik</a>
                                     </h3>
 
                                     <a href="#" class="btn-link">
-                                        <span class="span">Get Ticket</span>
+                                        <span class="span">Lihat Sekarang</span>
 
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
@@ -935,32 +956,32 @@
 
                             </div>
                         </li>
+
 
                         <li>
                             <div class="event-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/images/event-2.jpg" width="370" height="250" loading="lazy"
-                                        alt="Virtual Spring Part-time Jobs Fair for Student" class="img-cover">
+                                    <img src="{{ asset('assets/porto/spanLib.png') }}" width="370" height="250" loading="lazy"
+                                        alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-10-30">30th Oct 2022</time>
+                                <time class="badge" datetime="2022-12-04">Dinamis</time>
 
                                 <div class="card-content">
 
                                     <address class="card-address">
                                         <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
 
-                                        <span class="span">Ritter Avenue Detroit, MI 48226</span>
+                                        <span class="span">Website</span>
                                     </address>
 
                                     <h3 class="h3">
-                                        <a href="#" class="card-title">Virtual Spring Part-time Jobs Fair for
-                                            Student</a>
+                                        <a href="#" class="card-title">Spanca Library - Perpustakaan Online</a>
                                     </h3>
 
                                     <a href="#" class="btn-link">
-                                        <span class="span">Get Ticket</span>
+                                        <span class="span">Lihat Sekarang</span>
 
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
@@ -969,32 +990,32 @@
 
                             </div>
                         </li>
+
 
                         <li>
                             <div class="event-card">
 
                                 <figure class="card-banner">
-                                    <img src="./assets/images/event-3.jpg" width="370" height="250" loading="lazy"
-                                        alt="Explorations of Regional Chief Executive Network" class="img-cover">
+                                    <img src="{{ asset('assets/porto/ccc.png') }}" width="370" height="250" loading="lazy"
+                                        alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
                                 </figure>
 
-                                <time class="badge" datetime="2022-09-18">18th Sep 2022</time>
+                                <time class="badge" datetime="2022-12-04">Dinamis</time>
 
                                 <div class="card-content">
 
                                     <address class="card-address">
                                         <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
 
-                                        <span class="span">Stout Street York, PA 17401</span>
+                                        <span class="span">Website</span>
                                     </address>
 
                                     <h3 class="h3">
-                                        <a href="#" class="card-title">Explorations of Regional Chief Executive
-                                            Network</a>
+                                        <a href="#" class="card-title">CCC - Web App Kegiatan Ekskul Coding</a>
                                     </h3>
 
                                     <a href="#" class="btn-link">
-                                        <span class="span">Get Ticket</span>
+                                        <span class="span">Lihat Sekarang</span>
 
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
@@ -1003,6 +1024,43 @@
 
                             </div>
                         </li>
+
+
+                        <li>
+                            <div class="event-card">
+
+                                <figure class="card-banner">
+                                    <img src="{{ asset('assets/porto/portofolio.png') }}" width="370" height="250" loading="lazy"
+                                        alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
+                                </figure>
+
+                                <time class="badge" datetime="2022-12-04">Statis</time>
+
+                                <div class="card-content">
+
+                                    <address class="card-address">
+                                        <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+                                        <span class="span">Website</span>
+                                    </address>
+
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Portofolio Website, Sebarkan Skill Kamu</a>
+                                    </h3>
+
+                                    <a href="#" class="btn-link">
+                                        <span class="span">Lihat Sekarang</span>
+
+                                        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+
+
 
                     </ul>
 
@@ -1014,10 +1072,10 @@
 
 
             <!--
-            - #NEWSLETTER
-          -->
+                - #NEWSLETTER
+              -->
 
-            <section class="section newsletter" aria-label="newsletter"
+            {{-- <section class="section newsletter" aria-label="newsletter"
                 style="background-image: url('./assets/images/newsletter-bg.jpg')">
                 <div class="container">
 
@@ -1043,7 +1101,7 @@
                     </form>
 
                 </div>
-            </section>
+            </section> --}}
 
         </article>
     </main>
