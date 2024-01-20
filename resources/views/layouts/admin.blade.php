@@ -13,7 +13,9 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/1.png') }}" type="image/x-icon">
 
     {{-- FONTAWASOME --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     {{-- SWEETALERT2 --}}
@@ -25,7 +27,15 @@
 </head>
 
 <body>
-
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "SUCCESS!",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
 
     <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar"
         aria-controls="sidebar-multi-level-sidebar" type="button"
@@ -66,7 +76,8 @@
                     <button type="button"
                         class="flex items-center w-full p-2 text-base {{ Request::is('/admin/transaction/belum-bayar') || Request::is('/admin/transaction/diproses') || Request::is('/admin/transaction/diperiksa') || Request::is('/admin/transaction/selesai') ? 'text-white bg-blue 500' : 'text-gray-900' }} transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                         aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                        <i style="font-size: 24px;" class="fa-solid fa-clipboard-list flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
+                        <i style="font-size: 24px;"
+                            class="fa-solid fa-clipboard-list flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Transactions</span>
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
@@ -77,7 +88,8 @@
                     <ul id="dropdown-example" class="hidden py-2 space-y-2">
                         <li>
                             <a href="{{ url('/admin/transaction/belum-bayar') }}"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Belum Bayar</a>
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Belum
+                                Bayar</a>
                         </li>
                         <li>
                             <a href="{{ url('/admin/transaction/diproses') }}"
@@ -98,7 +110,8 @@
                 <li>
                     <a href="{{ url('/admin/service') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i style="font-size: 24px;" class="fa-brands fa-flipboard flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <i style="font-size: 24px;"
+                            class="fa-brands fa-flipboard flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Services</span>
                     </a>
                 </li>
@@ -106,7 +119,8 @@
                 <li>
                     <a href="{{ url('/admin/other') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i style="font-size: 19px;" class="fa-solid fa-network-wired flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <i style="font-size: 19px;"
+                            class="fa-solid fa-network-wired flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Other</span>
                     </a>
                 </li>
@@ -131,8 +145,7 @@
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
                         </svg>
                         <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>

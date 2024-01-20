@@ -112,7 +112,83 @@
                                 style="font-size: 22px; font-weight: bold; opacity: 0.92;">TOTAL: RP
                                 {{ number_format($transaction->services->price_after) }}K</span>
                             <div class="flex items-center gap-2">
-                                <button type="button"
+
+
+                               <button type="button"
+                                    style="color: #525DE0; border: 1px solid #525DE0; background-color: white;"
+                                    class="flex ml-auto text-white border-0 py-2 px-6 focus:outline-none rounded"
+                                    onclick="openModalCancel()">Cancel</button>
+
+
+                                    <div class="main-modal-cancel fixed w-full p-8 h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+                                        style="background: rgba(0,0,0,.7);">
+                                        <div
+                                            class="border border-teal-500 shadow-lg modal-container bg-white md:w-1/2  w-full mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                                            <div class="modal-content py-4 text-left px-6">
+                                                <!--Title-->
+                                                <div class="flex justify-between items-center pb-3">
+                                                    <p class="text-2xl font-bold">Menu</p>
+                                                    <div class="modal-close-cancel cursor-pointer z-50">
+                                                        <svg class="fill-current text-black"
+                                                            xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                            viewBox="0 0 18 18">
+                                                            <path
+                                                                d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <!--Body-->
+                                                <div class="my-5">
+                                                    <h3>APAKAH KAMU YAKIN? TRANSAKSI AKAN DIHAPUS...</h3>
+                                                    <form action="/cancelTransaction/{{$transaction->code}}" method="post" class="flex flex-wrap justify-start items-start gap-4">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="button"
+                                                            style="text-align: center !important; color: #525DE0; border: 1px solid #525DE0; background-color: #fff;" onclick="modalCloseCancel()"
+                                                            class="flex w-auto mt-4 text-white border-0 py-2 px-6 focus:outline-none rounded">Tidak</button>
+                                                        <button type="submit"
+                                                            style="text-align: center !important; color: white; border: 1px solid #525DE0; background-color: #525DE0;"
+                                                            class="flex w-auto mt-4 text-white border-0 py-2 px-6 focus:outline-none rounded">Cancel</button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        const modalCancel = document.querySelector('.main-modal-cancel');
+                                        const closeButtonCancel = document.querySelectorAll('.modal-close-cancel');
+
+                                        const modalCloseCancel = () => {
+                                            modalCancel.classList.remove('fadeIn');
+                                            modalCancel.classList.add('fadeOut');
+                                            setTimeout(() => {
+                                                modalCancel.style.display = 'none';
+                                            }, 500);
+                                        }
+
+                                        const openModalCancel = () => {
+                                            modalCancel.classList.remove('fadeOut');
+                                            modalCancel.classList.add('fadeIn');
+                                            modalCancel.style.display = 'flex';
+                                        }
+
+                                        for (let i = 0; i < closeButtonCancel.length; i++) {
+
+                                            const elementsProses = closeButtonCancel[i];
+
+                                            elementsProses.onclick = (e) => modalCloseCancel();
+
+                                            modalCancel.style.display = 'none';
+
+                                            window.onclick = function(event) {
+                                                if (event.target == modalCancel) modalCloseCancel();
+                                            }
+                                        }
+                                    </script>
+                                {{-- <button type="button"
                                     style="color: #525DE0; border: 1px solid #525DE0; background-color: white;"
                                     class="flex ml-auto text-white border-0 py-2 px-6 focus:outline-none rounded"
                                     onclick="event.preventDefault(); cancelTransaction('{{ $transaction->code }}');">Cancel</button>
@@ -164,7 +240,7 @@
                                             }
                                         });
                                     }
-                                </script>
+                                </script> --}}
 
                                 @if (Auth::user()->role == 'Admin')
                                     <button type="button"

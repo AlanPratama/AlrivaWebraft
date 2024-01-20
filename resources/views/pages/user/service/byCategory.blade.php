@@ -187,45 +187,62 @@
     </article>
   </main>
 
-
+  @if (Auth::user())
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('.whishlist-btn').on('click', function() {
-                        var serviceSlug = $(this).data('service-slug');
+  <script>
+      $(document).ready(function() {
+          $('.whishlist-btn').on('click', function() {
+              var serviceSlug = $(this).data('service-slug');
 
-                        $.ajax({
-                            url: '/addToWishlist',
-                            type: 'POST',
-                            data: {
-                                serviceSlug: serviceSlug,
-                                _token: $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response) {
-                                if (response.success) {
-                                    const Toast = Swal.mixin({
-                                        toast: true,
-                                        position: "top-start",
-                                        showConfirmButton: false,
-                                        timer: 3000,
-                                        timerProgressBar: true,
-                                        didOpen: (toast) => {
-                                            toast.onmouseenter = Swal.stopTimer;
-                                            toast.onmouseleave = Swal.resumeTimer;
-                                        }
-                                    });
-                                    Toast.fire({
-                                        icon: "success",
-                                        title: "BERHASIL MENAMBAH SERVICE DI WISHLIST"
-                                    });
+              $.ajax({
+                  url: '/addToWishlist',
+                  type: 'POST',
+                  data: {
+                      serviceSlug: serviceSlug,
+                      _token: $('meta[name="csrf-token"]').attr('content')
+                  },
+                  success: function(response) {
+                      if (response.success || response.status == 'success') {
+                          const Toast = Swal.mixin({
+                              toast: true,
+                              position: "top-start",
+                              showConfirmButton: false,
+                              timer: 3000,
+                              timerProgressBar: true,
+                              didOpen: (toast) => {
+                                  toast.onmouseenter = Swal.stopTimer;
+                                  toast.onmouseleave = Swal.resumeTimer;
+                              }
+                          });
+                          Toast.fire({
+                              icon: "success",
+                              title: "BERHASIL MENAMBAH SERVICE DARI WISHLIST"
+                          });
 
-                                }
-                            },
-                            error: function(error) {
-                                console.log(error);
-                            }
-                        });
-                    });
-                });
-            </script>
+                      } else {
+                          const Toast = Swal.mixin({
+                              toast: true,
+                              position: "top-start",
+                              showConfirmButton: false,
+                              timer: 3000,
+                              timerProgressBar: true,
+                              didOpen: (toast) => {
+                                  toast.onmouseenter = Swal.stopTimer;
+                                  toast.onmouseleave = Swal.resumeTimer;
+                              }
+                          });
+                          Toast.fire({
+                              icon: "success",
+                              title: "BERHASIL MENGHAPUS SERVICE DARI WISHLIST"
+                          });
+                      }
+                  },
+                  error: function(error) {
+                      console.log(error);
+                  }
+              });
+          });
+      });
+  </script>
+@endif
 @endsection

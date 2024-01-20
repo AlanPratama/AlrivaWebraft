@@ -49,11 +49,12 @@ class UserPageController extends Controller
 
         if ($wishList) {
             $wishList->delete();
+            return response()->json(['status' => 'deleted']);
         } else {
             Wishlist::create($data);
+            return response()->json(['status' => 'success']);
         }
 
-        return redirect()->back();
     }
 
 

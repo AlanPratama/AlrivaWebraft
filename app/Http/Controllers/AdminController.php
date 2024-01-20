@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\Transaction;
 use App\Models\Type;
 use App\Models\User;
+use App\Models\Wishlist;
 use Carbon\Carbon;
 use COM;
 use Illuminate\Http\Request;
@@ -373,6 +374,31 @@ class AdminController extends Controller
 
         return redirect()->route('service')->with('success', 'STATUS UPDATED');
     }
+
+    public function deleteService(Request $request)
+    {
+        $service = Service::where('slug', $request->serviceSlug)->first();
+        $transactions = Transaction::where('service_id', $service->id)->get();
+        $wishLists = Wishlist::where('service_id', $service->id)->get();
+
+        if ($transactions->count() > 0) {
+            foreach ($transactions as $transaction) {
+                $transaction->delete();
+            }
+        }
+
+        if ($wishLists->count() > 0) {
+            foreach ($wishLists as $wl) {
+                $wl->delete();
+            }
+        }
+
+        $service->delete();
+
+        return response()->json(['status' => 'success']);
+    }
+
+
 
 
 

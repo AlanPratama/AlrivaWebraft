@@ -46,10 +46,11 @@
                     </ul>
                 </div>
             </form>
-            <button type="button"
-                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded text-sm px-2.5 py-1.5 text-center"
-                data-modal-target="type-add-modal" data-modal-toggle="type-add-modal">+ ADD SERVICE</button>
 
+            <a href="{{ url('/admin/create-service') }}">
+                <button type="button"
+                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded text-sm px-2.5 py-1.5 text-center">+ ADD SERVICE</button>
+            </a>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
@@ -88,7 +89,7 @@
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <td class="w-4 p-4">
-                                    1
+                                    {{ $loop->iteration }}
                                 </td>
                                 <th scope="row"
                                     class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -97,7 +98,8 @@
                                         alt="Jese image">
                                     <div class="ps-3">
                                         <div class="text-base font-semibold">{{ $service->name }}</div>
-                                        <div class="font-normal text-gray-500">{{ $service->type->name }} - {{ $service->category->name }}</div>
+                                        <div class="font-normal text-gray-500">{{ $service->type->name }} -
+                                            {{ $service->category->name }}</div>
                                     </div>
                                 </th>
                                 {{-- // image, Name & type, category, estimation, price_before, price_After, sold, description, status,  --}}
@@ -127,12 +129,13 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex justify-center items-center ">
-                                        <a href="{{ url('/') }}" class="font-medium w-auto">
+                                        <a href="{{ url('/service/detail/'.$service->slug) }}" class="font-medium w-auto">
                                             <i
                                                 class="fa-solid fa-circle-info text-lg text-white bg-blue-500 py-1 px-1 rounded"></i>
                                         </a>
-                                        <button data-modal-target="edit-modal-{{ $service->slug }}" data-modal-toggle="edit-modal-{{ $service->slug }}"
-                                            class="font-medium w-auto" style="margin: 0px 1px;">
+                                        <button data-modal-target="edit-modal-{{ $service->slug }}"
+                                            data-modal-toggle="edit-modal-{{ $service->slug }}" class="font-medium w-auto"
+                                            style="margin: 0px 1px;">
                                             <i
                                                 class="fa-solid fa-pen-to-square text-lg text-white bg-green-500 py-1 px-1 rounded"></i>
                                         </button>
@@ -164,13 +167,15 @@
                                                     </div>
                                                     <!-- Modal body -->
                                                     <div class="p-4 md:p-5">
-                                                        <p class="text-gray-500 dark:text-gray-400 mb-4">What do you want to do?</p>
+                                                        <p class="text-gray-500 dark:text-gray-400 mb-4">What do you want
+                                                            to do?</p>
                                                         <ul class="space-y-4 mb-4">
                                                             <li>
                                                                 <a href="{{ url('/admin/service/edit/' . $service->slug) }}"
                                                                     class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
                                                                     <div class="block">
-                                                                        <div class="w-full text-lg font-semibold">EDIT INFORMATION</div>
+                                                                        <div class="w-full text-lg font-semibold">EDIT
+                                                                            INFORMATION</div>
                                                                         <div
                                                                             class="w-full text-gray-500 dark:text-gray-400">
                                                                             REDIRECT TO EDIT PAGE</div>
@@ -186,15 +191,21 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <form action="{{ route('statusUpdateService', ['slug' => $service->slug]) }}" method="post"
+                                                                <form
+                                                                    action="{{ route('statusUpdateService', ['slug' => $service->slug]) }}"
+                                                                    method="post"
                                                                     class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
                                                                     @csrf
                                                                     @method('put')
                                                                     <button type="submit" class="block">
-                                                                        <div class="w-full text-lg font-semibold">UPDATE STATUS</div>
+                                                                        <div class="w-full text-lg font-semibold">UPDATE
+                                                                            STATUS</div>
                                                                         <div
                                                                             class="w-full text-gray-500 dark:text-gray-400">
-                                                                            {{ $service->status == 'avalaible' ? 'avalaible' : 'not avalaible' }} => {{ $service->status != 'avalaible' ? 'avalaible' : 'not avalaible' }}</div>
+                                                                            {{ $service->status == 'avalaible' ? 'avalaible' : 'not avalaible' }}
+                                                                            =>
+                                                                            {{ $service->status != 'avalaible' ? 'avalaible' : 'not avalaible' }}
+                                                                        </div>
                                                                     </button>
                                                                     <svg class="w-4 h-4 ms-3 rtl:rotate-180 text-gray-500 dark:text-gray-400"
                                                                         aria-hidden="true"
@@ -213,8 +224,9 @@
                                         </div>
 
 
-                                        <button type="button" class="font-medium w-auto"
-                                            onclick="event.preventDefault(); deleteType('{{ $service->slug }}');">
+                                        <button type="button" class="font-medium w-auto cancel-btn-ser"
+                                            data-service-slug="{{ $service->slug }}" aria-label="delete service"
+                                            data-service-btn>
                                             <i
                                                 class="fa-solid fa-trash-can text-lg text-white bg-red-500 py-1 px-1 rounded"></i>
                                         </button>
@@ -229,4 +241,45 @@
         </div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.cancel-btn-ser').on('click', function() {
+                var serviceSlug = $(this).data('service-slug');
+
+                $.ajax({
+                    url: '/admin/service',
+                    type: 'POST',
+                    data: {
+                        serviceSlug: serviceSlug,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if (response.success || response.status == 'success') {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "top-start",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.onmouseenter = Swal.stopTimer;
+                                    toast.onmouseleave = Swal.resumeTimer;
+                                }
+                            });
+                            Toast.fire({
+                                icon: "success",
+                                title: "SUCCESSFULLY DELETED SERVICE"
+                            });
+                            window.location.reload(true);
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

@@ -100,6 +100,7 @@ Route::middleware('auth')->group(function () {
 
 
         Route::get('/service', [AdminController::class, 'service'])->name('service');
+        Route::post('/service', [AdminController::class, 'deleteService']);
 
         Route::get('/create-service', [AdminController::class, 'serviceCreateIndex']);
         Route::post('service.create', [AdminController::class, 'serviceCreate'])->name('serviceCreate');

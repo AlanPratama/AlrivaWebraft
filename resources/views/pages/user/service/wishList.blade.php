@@ -9,8 +9,8 @@
 
 
             <!--
-                - #CATEGORY
-              -->
+                    - #CATEGORY
+                  -->
 
             <section class="section category" aria-label="category">
                 <div class="container">
@@ -56,8 +56,8 @@
 
 
             <!--
-                - #COURSE
-              -->
+                    - #COURSE
+                  -->
 
             <section class="section course" id="courses" aria-label="course"
                 style="background-image: url('./assets/images/course-bg.jpg')">
@@ -129,7 +129,8 @@
                                             </ul>
 
                                             <h3 class="h3">
-                                                <a href="{{ url('/service/detail/'.$wishList->services->slug) }}" class="card-title">{{ $wishList->services->name }}</a>
+                                                <a href="{{ url('/service/detail/' . $wishList->services->slug) }}"
+                                                    class="card-title">{{ $wishList->services->name }}</a>
                                             </h3>
 
                                             <p class=""
@@ -144,17 +145,17 @@
 
                                             <!-- <div class="rating-wrapper">
 
-                                                <div class="rating">
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                    <ion-icon name="star"></ion-icon>
-                                                </div>
+                                                    <div class="rating">
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                    </div>
 
-                                                <span class="rating-text">(18 Review)</span>
+                                                    <span class="rating-text">(18 Review)</span>
 
-                                                </div> -->
+                                                    </div> -->
 
                                             <div class="card-footer">
 
@@ -185,7 +186,9 @@
                         </ul>
                     @else
                         <div class="text-center w-full" style="padding: 40px 0px;">
-                            <h3 class="text-center w-full flex items-center justify-center gap-2" style="font-size: 20px;">KAMU BELUM LOGIN | <a href="{{ url('/auth/login') }}" class="text-blue-500 font-semibold">LOGIN SEKARANG</a></h3>
+                            <h3 class="text-center w-full flex items-center justify-center gap-2" style="font-size: 20px;">
+                                KAMU BELUM LOGIN | <a href="{{ url('/auth/login') }}"
+                                    class="text-blue-500 font-semibold">LOGIN SEKARANG</a></h3>
                         </div>
                     @endif
 
@@ -203,44 +206,62 @@
     </main>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.whishlist-btn').on('click', function() {
-                var serviceSlug = $(this).data('service-slug');
+    @if (Auth::user())
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.whishlist-btn').on('click', function() {
+                    var serviceSlug = $(this).data('service-slug');
 
-                $.ajax({
-                    url: '/addToWishlist',
-                    type: 'POST',
-                    data: {
-                        serviceSlug: serviceSlug,
-                        _token: $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: "top-start",
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.onmouseenter = Swal.stopTimer;
-                                    toast.onmouseleave = Swal.resumeTimer;
-                                }
-                            });
-                            Toast.fire({
-                                icon: "success",
-                                title: "BERHASIL MENAMBAH SERVICE DI WISHLIST"
-                            });
+                    $.ajax({
+                        url: '/addToWishlist',
+                        type: 'POST',
+                        data: {
+                            serviceSlug: serviceSlug,
+                            _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            if (response.success || response.status == 'success') {
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: "top-start",
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.onmouseenter = Swal.stopTimer;
+                                        toast.onmouseleave = Swal.resumeTimer;
+                                    }
+                                });
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "BERHASIL MENAMBAH SERVICE DARI WISHLIST"
+                                });
 
+                            } else {
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: "top-start",
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.onmouseenter = Swal.stopTimer;
+                                        toast.onmouseleave = Swal.resumeTimer;
+                                    }
+                                });
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "BERHASIL MENGHAPUS SERVICE DARI WISHLIST"
+                                });
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
                         }
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+    @endif
 @endsection

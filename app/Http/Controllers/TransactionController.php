@@ -75,9 +75,11 @@ class TransactionController extends Controller
 
         $transaction->delete();
 
-        return response()->json([
-            'status' => 200
-        ]);
+        if (Auth::user()->role == 'Admin') {
+            return redirect('/admin/transaction/belum-bayar')->with('success', 'TRANSACTION CANCELED SUCCESSFULLY');
+        } else {
+            return redirect('/transaksi')->with('success', 'TRANSAKSI TELAH DICANCEL');
+        }
     }
 
 
