@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('service_id')->references('id')->on('services');
 
 
-            $table->string('message')->nullable();
+            $table->text('message')->nullable();
 
             $table->integer('total_price');
 

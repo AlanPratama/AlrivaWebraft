@@ -131,10 +131,10 @@
                                         {{ $type->service->count() }}
                                     </td>
                                     <td class="px-6 py-4 text-center">
-                                        <a href="{{ url('/') }}" class="font-medium w-auto">
+                                        {{-- <a href="{{ url('/') }}" class="font-medium w-auto">
                                             <i
                                                 class="fa-solid fa-circle-info text-lg text-white bg-blue-500 py-1 px-1 rounded"></i>
-                                        </a>
+                                        </a> --}}
 
                                         <button type="button" data-modal-target="type-modal-{{ $type->name }}"
                                             data-modal-toggle="type-modal-{{ $type->name }}" class="font-medium w-auto"
@@ -394,7 +394,7 @@
                                         {{ $category->service->count() }}
                                     </td>
                                     <td class="px-6 py-4 text-center">
-                                        <a href="{{ url('/') }}" class="font-medium w-auto">
+                                        <a href="{{ url('/category/'.$category->slug) }}" class="font-medium w-auto">
                                             <i
                                                 class="fa-solid fa-circle-info text-lg text-white bg-blue-500 py-1 px-1 rounded"></i>
                                         </a>

@@ -57,6 +57,26 @@ class UserPageController extends Controller
 
     }
 
+    public function addToWishlistDetailPage(Request $request)
+    {
+        $service = Service::where('slug', $request->serviceSlug)->first();
+        $wishList = Wishlist::where('service_id', $service->id)->first();
+        $data = [
+            'user_id' => Auth::user()->id,
+            'service_id' => $service->id,
+        ];
+
+
+        if ($wishList) {
+            $wishList->delete();
+            return redirect()->back()->with('success', 'BERHASIL MENGHAPUS SERVICE DARI WISHLIST');
+        } else {
+            Wishlist::create($data);
+            return redirect()->back()->with('success', 'BERHASIL MENAMBAH SERVICE DARI WISHLIST');
+        }
+
+    }
+
 
 
     public function service(Request $request)

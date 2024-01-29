@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="text-gray-700 body-font overflow-hidden bg-white"
+    <section class="sm:pt-20 pt-12 text-gray-700 body-font overflow-hidden bg-white"
         style=" min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <div class="container px-5 py-24 mx-auto">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
-                <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+                <img alt="{{ $service->name }}" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
                     src="{{ $service->image_link == 'NO' ? asset($service->image) : $service->image }}">
                 <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2 class="text-sm title-font text-gray-500 tracking-widest" style="font-size: 16px;">ALRIVA WEBCRAFT</h2>
-                    <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"
-                        style="margin: 17px 0px; font-size: 30px;">{{ $service->name }}</h1>
+                    <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 leading-snug"
+                        style="margin: 17px 0px; font-size: 30px;">{{ $service->name }} lalalala lalalala lalala</h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
                             <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -97,7 +97,7 @@
                                 $wl = $service->wishlist->where('user_id', Auth::user()->id)->first();
                             @endphp
                             @if ($wl)
-                                <form action="{{ route('addToWishlist') }}" method="post">
+                                <form action="{{ route('addToWishlistDetailPage') }}" method="post">
                                     @csrf
                                     <button type="submit" name="serviceSlug" value="{{ $service->slug }}"
                                         style="color: #525DE0; border: 1px solid #525DE0; opacity: .7; background-color: white;"
@@ -106,7 +106,7 @@
                                         Whishlist</button>
                                 </form>
                             @else
-                                <form action="{{ route('addToWishlist') }}" method="post">
+                                <form action="{{ route('addToWishlistDetailPage') }}" method="post">
                                     @csrf
                                     <button type="submit" name="serviceSlug" value="{{ $service->slug }}"
                                         style="color: #525DE0; border: 1px solid #525DE0; background-color: white;"
@@ -124,11 +124,11 @@
                             <span class="title-font font-semibold text-2xl text-gray-900"
                                 style="font-size: 22px; font-weight: bold; opacity: 0.92;">RP
                                 {{ number_format($service->price_after) }}K</span>
-                            <a href="{{ url('/login') }}">
+                            <a href="{{ url('/auth/login') }}">
                                 <button style="background-color: #525DE0;"
                                     class="flex ml-auto text-white border-0 py-2 px-6 focus:outline-none rounded">Beli</button>
                             </a>
-                            <a href="{{ url('/login') }}">
+                            <a href="{{ url('/auth/login') }}">
                                 <button style="color: #525DE0; border: 1px solid #525DE0; background-color: white;"
                                     class="flex ml-4 text-white border-0 py-2 px-6 focus:outline-none rounded">Add To
                                     Whishlist</button>

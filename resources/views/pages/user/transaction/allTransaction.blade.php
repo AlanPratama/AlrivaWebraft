@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="bg-gray-100 font-sans flex items-center justify-center" style="margin-top: 140px; padding-bottom: 20px;">
-        <div x-data="{ openTab: 1 }" class="px-8 w-full">
+    <div class="bg-gray-100 font-sans flex items-center justify-center" style="padding-top: 140px; padding-bottom: 20px;">
+        <div x-data="{ openTab: 1 }" class="sm:px-8 px-4 w-full">
             <div class="w-full mx-auto">
-                <div class="mb-4 flex space-x-4 p-2 bg-white rounded-lg shadow-md">
+                <div class="mb-4 flex sm:space-x-4 space-x-2 p-2 bg-white rounded-lg shadow-md">
                     <button x-on:click="openTab = 1" :class="{ 'bg-blue-600 text-white': openTab === 1 }"
-                        class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">Belum
+                        class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300"><span class="sm:inline-block hidden">Belum</span>
                         Bayar</button>
                     <button x-on:click="openTab = 2" :class="{ 'bg-blue-600 text-white': openTab === 2 }"
                         class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">Diproses</button>

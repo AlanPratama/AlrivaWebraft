@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/akun/{slug}', [UserController::class, 'akunEdit'])->name('edit.akun');
 
     Route::post('/addToWishlist', [UserPageController::class, 'addToWishlist'])->name('addToWishlist');
+    Route::post('/addToWishlistDetailPage', [UserPageController::class, 'addToWishlistDetailPage'])->name('addToWishlistDetailPage');
 
 
     Route::get('/transaksi', [TransactionController::class, 'allTransaction']);
