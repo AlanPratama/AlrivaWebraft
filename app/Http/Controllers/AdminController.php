@@ -22,13 +22,37 @@ class AdminController extends Controller
         $transactions = Transaction::where('status', '!=', 'Belum Bayar')->paginate(5);
         $countTransaction = Transaction::where('status', '!=', 'Belum Bayar')->get();
 
+        // Menghitung total keuntungan transaksi minggu ini
+        $weekStart = Carbon::now()->startOfWeek();
+        $weekEnd = Carbon::now()->endOfWeek();
+
+        $thisWeek = Transaction::where('status', '!=', 'Belum Bayar')
+            ->whereBetween('created_at', [$weekStart, $weekEnd])
+            ->sum('total_price');
+
+        // Menghitung total keuntungan transaksi bulan ini
+        $monthStart = Carbon::now()->startOfMonth();
+        $monthEnd = Carbon::now()->endOfMonth();
+
+        $thisMonth = Transaction::where('status', '!=', 'Belum Bayar')
+            ->whereBetween('created_at', [$monthStart, $monthEnd])
+            ->sum('total_price');
+
+        // Menghitung total keuntungan transaksi tahun ini
+        $yearStart = Carbon::now()->startOfYear();
+        $yearEnd = Carbon::now()->endOfYear();
+
+        $thisYear = Transaction::where('status', '!=', 'Belum Bayar')
+            ->whereBetween('created_at', [$yearStart, $yearEnd])
+            ->sum('total_price');
+
         foreach ($countTransaction as $item) {
             $profit += $item->total_price;
         }
 
         $user = User::where('role', '!=', 'Admin')->count();
 
-        return view('pages.admin.dashboard', compact('services', 'countTransaction', 'profit', 'transactions', 'user'));
+        return view('pages.admin.dashboard', compact('services', 'countTransaction', 'profit', 'transactions', 'user', 'thisYear', 'thisMonth', 'thisWeek'));
     }
 
     // BELUM BAYAR

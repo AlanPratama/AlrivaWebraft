@@ -64,6 +64,55 @@
     </div>
 
 
+    <div class="w-full grid lg:grid-cols-3 grid-cols-1  gap-2 mb-4">
+        <a href="{{ url('daftar-user') }}"
+            class="flex justify-between items-center text-white border border-gray-200 rounded-lg shadow md:flex-row lg:max-w-xl bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300">
+            <div class="flex justify-between items-center p-4 leading-normal ">
+                <div class="text-left">
+                    <p class="text-3xl pl-4">
+                        RP {{ number_format($thisWeek) }}K
+                    </p>
+                    <h5 class=" mb-2 text-xl font-bold tracking-tight ">Profit Minggu Ini</h5>
+                </div>
+
+            </div>
+            <div class="icon flex justify-between items-center p-4 leading-normal">
+                <i class="fa-solid fa-users text-2xl"></i>
+            </div>
+        </a>
+        <a href="{{ url('daftar-user') }}"
+            class="flex justify-between items-center text-white border border-gray-200 rounded-lg shadow md:flex-row lg:max-w-xl bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300">
+            <div class="flex justify-between items-center p-4 leading-normal ">
+                <div class="text-left">
+                    <p class="text-3xl pl-4">
+                        RP {{ number_format($thisMonth) }}K
+                    </p>
+                    <h5 class=" mb-2 text-xl font-bold tracking-tight ">Profit Bulan Ini</h5>
+                </div>
+
+            </div>
+            <div class="icon flex justify-between items-center p-4 leading-normal">
+                <i class="fa-solid fa-users text-2xl"></i>
+            </div>
+        </a>
+        <a href="{{ url('daftar-user') }}"
+            class="flex justify-between items-center text-white border border-gray-200 rounded-lg shadow md:flex-row lg:max-w-xl bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300">
+            <div class="flex justify-between items-center p-4 leading-normal ">
+                <div class="text-left">
+                    <p class="text-3xl pl-4">
+                        RP {{ number_format($thisYear) }}K
+                    </p>
+                    <h5 class=" mb-2 text-xl font-bold tracking-tight ">Profit Tahun Ini</h5>
+                </div>
+
+            </div>
+            <div class="icon flex justify-between items-center p-4 leading-normal">
+                <i class="fa-solid fa-users text-2xl"></i>
+            </div>
+        </a>
+    </div>
+
+
 
     <div class="w-full flex justify-between items-center  gap-2 mb-4">
         <div

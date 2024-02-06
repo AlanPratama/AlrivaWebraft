@@ -917,6 +917,102 @@
                 </div>
             </section>
 
+             <!--
+                - #ID CARD
+              -->
+
+              <section class="instructor" id="idCart">
+                <div class="container">
+
+                    <div class="title-wrapper">
+                        <h2 class="h2 instructor-title"><span style="color: #525DE0; display: inline;">ALRIVA
+                                WEBCRAFT'S</span> ID CARD</h2>
+
+                        <!-- <button class="btn btn-primary">View All Teachers</button> -->
+                    </div>
+
+                    <ul class="instructor-list">
+
+                        <li>
+                            <div class="instructor-card">
+
+                                <figure class="card-banner">
+                                    <img src="./assets/images/1.png" alt="alan pratama">
+                                </figure>
+
+                                <a href="#">
+                                    <h3 class="card-title">Alan Pratama</h3>
+                                </a>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="instructor-card">
+
+                                <figure class="card-banner">
+                                    <img src="./assets/images/3.png" alt="arif">
+                                </figure>
+
+                                <a href="#">
+                                    <h3 class="card-title">Arif Ibrahim</h3>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="instructor-card">
+
+                                <figure class="card-banner">
+                                    <img src="./assets/images/2.png" alt="arva revanza">
+                                </figure>
+
+                                <a href="#">
+                                    <h3 class="card-title">Arva Revanza</h3>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+            </section>
+
+
+            <!--
+                - #POSTER
+              -->
+
+              <section class="instructor" id="poster">
+                <div class="container">
+
+                    <div class="title-wrapper">
+                        <h2 class="h2 instructor-title"><span style="color: #525DE0; display: inline;">ALRIVA
+                                WEBCRAFT'S</span> POSTER</h2>
+
+                        <!-- <button class="btn btn-primary">View All Teachers</button> -->
+                    </div>
+
+                    <ul class="instructor-list">
+
+                        <li>
+                            <div class="instructor-card">
+
+                                <figure class="card-banner">
+                                    <img src="./assets/images/poster-alriva.png" alt="arva revanza">
+                                </figure>
+
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+            </section>
+
 
 
             <!--
